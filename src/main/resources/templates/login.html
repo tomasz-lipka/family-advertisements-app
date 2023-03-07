@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<link rel="stylesheet" th:href="@{../static/styles.css}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <hr>
-    <title>Please Log In</title>
+    <meta charset="UTF-8">
+    <title>Family Advertisements</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Please Log In</h1>
+<h1>Family Advertisements</h1>
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
 <br>
 <form th:action="@{/login}" method="post">
     <div>
-        <input type="text" name="username" placeholder="Login"/>
+        <input type="text" name="username" placeholder="login"/>
     </div>
     <br>
     <div>
-        <input type="password" name="password" placeholder="Password"/>
+        <input type="password" name="password" placeholder="password"/>
     </div>
     <br>
-    <input type="submit" value="Log in"/>
+    <input type="submit" value="log in"/>
 </form>
-<hr>
+<br>
 </body>
 </html>
