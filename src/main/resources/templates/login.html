@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<link rel="stylesheet" th:href="@{../static/styles.css}">
+<head>
+    <hr>
+    <title>Please Log In</title>
+</head>
+<body>
+<h1>Please Log In</h1>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<br>
+<form th:action="@{/login}" method="post">
+    <div>
+        <input type="text" name="username" placeholder="Login"/>
+    </div>
+    <br>
+    <div>
+        <input type="password" name="password" placeholder="Password"/>
+    </div>
+    <br>
+    <input type="submit" value="Log in"/>
+</form>
+<hr>
+</body>
+</html>
