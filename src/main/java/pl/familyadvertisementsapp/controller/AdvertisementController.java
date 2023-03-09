@@ -1,13 +1,10 @@
 package pl.familyadvertisementsapp.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
-@RestController
-@RequestMapping("/")
+@Controller
+//@RequestMapping("/")
 public class AdvertisementController {
 
     private final AdvertisementRepository advertisementRepository;
@@ -15,9 +12,14 @@ public class AdvertisementController {
     public AdvertisementController(AdvertisementRepository advertisementRepository) {
         this.advertisementRepository = advertisementRepository;
     }
+//    @GetMapping
+//    public String test() {
+//        return "page";
+//    }
 
-    @GetMapping
-    public ResponseEntity getAllAdvertisements() {
-        return ResponseEntity.ok(this.advertisementRepository.findAll());
-    }
+//    @GetMapping
+//    public String getAllAdvertisements() {
+////        return ResponseEntity.ok(this.advertisementRepository.findAll().);
+//        return this.advertisementRepository.findAll().toString();
+//    }
 }
