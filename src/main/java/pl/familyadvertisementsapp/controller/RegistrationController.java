@@ -15,10 +15,12 @@ public class RegistrationController {
         return "register";
     }
 
-    //TODO is it safe for passwords?
+    //TODO is ModelAttribute safe for passwords?
     @PostMapping("/register")
     public void registerUserAccount(@ModelAttribute UserDto userDto, Model model) {
         model.addAttribute("user", userDto);
         System.out.println(userDto.getLogin());
+        System.out.println(userDto.getPassword());
+        System.out.println(userDto.getMatchingPassword());
     }
 }

@@ -1,14 +1,35 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>sign in</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Family Advertisements</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Form</h1>
-<form action="#" th:action="@{/register}" th:object="${user}" method="post">
-    <p>Id: <input type="text" th:field="*{login}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<h1>Sign up</h1>
+<div th:if="${param.error}">
+    Something went wrong.
+</div>
+<br>
+<form th:action="@{/register}" th:object="${user}" method="post">
+    <div>
+        <input type="text" th:field="*{login}" placeholder="login"/>
+    </div>
+    <br>
+    <div>
+        <input type="password" th:field="*{password}" placeholder="password"/>
+    </div>
+    <br>
+    <div>
+        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password"/>
+    </div>
+    <br>
+    <input type="submit" value="sign up"/>
 </form>
+<br>
+<a th:href="@{/login}">sing in</a>
+<div>
+    <br>
+</div>
 </body>
 </html>
