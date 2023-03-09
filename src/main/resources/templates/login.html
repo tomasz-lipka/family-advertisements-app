@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Family Advertisements</h1>
+<p>Simple app to share local advertisements with your family and friends</p>
+
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
-<br>
+<br><br>
 <form th:action="@{/login}" method="post">
     <div>
         <input type="text" name="username" placeholder="login"/>
@@ -22,10 +24,10 @@
     <br>
     <input type="submit" value="sign in"/>
 </form>
-<br>
+<br><br>
 <a th:href="@{/register}">sing up</a>
-<div>
-    <br>
-</div>
 </body>
+<footer>
+    <p><small>2023 • TL</small></p>
+</footer>
 </html>

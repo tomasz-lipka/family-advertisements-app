@@ -12,7 +12,7 @@
 	<artifactId>family-advertisements-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>family-advertisements-app</name>
-	<description>Share local advertisements with your family and friends.</description>
+	<description>Simple app to share local advertisements with your family and friends</description>
 	<properties>
 		<java.version>19</java.version>
 	</properties>

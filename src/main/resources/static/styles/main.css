@@ -1,15 +1,23 @@
 body {
-text-align: center;
-background-image: linear-gradient(to right, #154c79 , #abdbe3);
-border: 10px solid white;
+  text-align: center;
+  background-color: #344955;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-color: #ff9933;
-font-family: Arial, Helvetica, sans-serif;
+a {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input{
-   text-align:center;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
