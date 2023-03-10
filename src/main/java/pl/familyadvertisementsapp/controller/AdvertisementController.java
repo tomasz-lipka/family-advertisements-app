@@ -3,7 +3,7 @@ package pl.familyadvertisementsapp.controller;
 import org.springframework.stereotype.Controller;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
-@Controller
+//@Controller
 //@RequestMapping("/")
 public class AdvertisementController {
 

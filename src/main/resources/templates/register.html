@@ -6,23 +6,23 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Sign up</h1>
+<h1>Create account</h1>
 <div th:if="${param.error}">
     Something went wrong.
 </div>
 <br>
-<form th:action="@{/register}" th:object="${user}" method="post">
+<form th:action="@{/register}" th:object="${appuser}" method="post">
     <div>
-        <input type="text" th:field="*{login}" placeholder="login"/>
+        <input type="text" th:field="*{username}" placeholder="username"/>
     </div>
     <br>
     <div>
         <input type="password" th:field="*{password}" placeholder="password"/>
     </div>
-    <br>
-    <div>
-        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password"/>
-    </div>
+<!--    <br>-->
+<!--    <div>-->
+<!--        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password"/>-->
+<!--    </div>-->
     <br>
     <input type="submit" value="sign up"/>
 </form>
