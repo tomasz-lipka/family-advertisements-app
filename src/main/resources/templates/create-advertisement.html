@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Family Advertisements</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1>Create advertisement</h1>
+<div th:if="${param.error}">
+    Something went wrong.
+</div>
+<br>
+<form th:action="@{/create-advertisement}" th:object="${advertisement}" method="post">
+    <div>
+        <input class="create-advertisement" type="text" th:field="*{title}" placeholder="title"/>
+    </div>
+    <br>
+    <textarea class="create-advertisement" rows="6" cols="50" th:field="*{description}" placeholder="enter description here..."/>
+    <br><br>
+    <input type="submit" value="create"/>
+</form>
+</body>
+<footer>
+    <p><small>2023 • TL</small></p>
+</footer>
+</html>

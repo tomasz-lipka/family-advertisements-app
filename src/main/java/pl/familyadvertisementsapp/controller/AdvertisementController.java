@@ -1,21 +1,32 @@
 package pl.familyadvertisementsapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.familyadvertisementsapp.repository.AdvertisementRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.familyadvertisementsapp.model.Advertisement;
+import pl.familyadvertisementsapp.service.AdvertisementService;
 
-//@Controller
-//@RequestMapping("/")
+@Controller
 public class AdvertisementController {
 
-    private final AdvertisementRepository advertisementRepository;
+    @Autowired
+    AdvertisementService advertisementService;
 
-    public AdvertisementController(AdvertisementRepository advertisementRepository) {
-        this.advertisementRepository = advertisementRepository;
+    @GetMapping("/create-advertisement")
+    public String createAdvertisement(Model model) {
+        Advertisement advertisement = new Advertisement();
+        model.addAttribute("advertisement", advertisement);
+        return "create-advertisement";
     }
-//    @GetMapping
-//    public String test() {
-//        return "page";
-//    }
+
+    @PostMapping("/create-advertisement")
+    public void createAdvertisement(@ModelAttribute Advertisement advertisement, Model model) {
+        model.addAttribute("advertisement", advertisement);
+        advertisementService.createAdvertisement(advertisement);
+    }
 
 //    @GetMapping
 //    public String getAllAdvertisements() {

@@ -6,7 +6,18 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet">
 </head>
 <body>
-  <a th:href="@{/logout}">Logout</a>
+<ul>
+    <li><a th:href="@{/create-advertisement}">Create advertisement</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+</ul>
+<br><br>
+<tr th:each="advertisement: ${advertisements}">
+    <td th:text="${advertisement.title}"/>
+    <br>
+    <td th:text="${advertisement.description}"/>
+    <br>
+    <p>* * *</p>
+</tr>
 </body>
 <footer>
     <p><small>2023 • TL</small></p>
