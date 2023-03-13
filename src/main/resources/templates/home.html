@@ -4,19 +4,35 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
-<ul>
-    <li><a th:href="@{/create-advertisement}">Create advertisement</a></li>
-    <li><a th:href="@{/logout}">Logout</a></li>
+<ul class="center">
+    <li><a class="active" th:href="@{/}">home</a></li>
+    •
+    <li><a th:href="@{/create-advertisement}">create advertisement</a></li>
+    •
+    <li><a th:href="@{/logout}">logout</a></li>
 </ul>
-<br><br>
+<hr>
+<br>
 <tr th:each="advertisement: ${advertisements}">
-    <td th:text="${advertisement.title}"/>
+    <div id="container">
+        <div id="left">
+            <h2 class="adv-title">
+                <td th:text="${advertisement.title}"/>
+            </h2>
+            <p class="adv-date">
+            <td th:text="'created: ' + ${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"/>
+            </p>
+        </div>
+        <div id="right">
+            <p>
+            <td th:text="${advertisement.description}"/>
+            </p>
+        </div>
+    </div>
     <br>
-    <td th:text="${advertisement.description}"/>
-    <br>
-    <p>* * *</p>
 </tr>
 </body>
 <footer>

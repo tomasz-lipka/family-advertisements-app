@@ -16,7 +16,7 @@ public class HomePageController {
     private AdvertisementService advertisementService;
 
     @GetMapping("/")
-    public String test(Model model) {
+    public String getAllAdvertisements(Model model) {
         Collection<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
         return "home";

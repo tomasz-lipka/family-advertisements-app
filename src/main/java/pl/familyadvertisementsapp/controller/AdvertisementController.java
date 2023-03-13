@@ -22,15 +22,10 @@ public class AdvertisementController {
         return "create-advertisement";
     }
 
+    //TODO validate max descirption and title to fit in div
     @PostMapping("/create-advertisement")
     public void createAdvertisement(@ModelAttribute Advertisement advertisement, Model model) {
         model.addAttribute("advertisement", advertisement);
         advertisementService.createAdvertisement(advertisement);
     }
-
-//    @GetMapping
-//    public String getAllAdvertisements() {
-////        return ResponseEntity.ok(this.advertisementRepository.findAll().);
-//        return this.advertisementRepository.findAll().toString();
-//    }
 }

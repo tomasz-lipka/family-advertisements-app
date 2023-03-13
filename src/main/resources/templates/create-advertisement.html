@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Create advertisement</h1>
+<ul class="center">
+    <li><a th:href="@{/}">home</a></li>
+    •
+    <li><a class="active" th:href="@{/create-advertisement}">create advertisement</a></li>
+    •
+    <li><a th:href="@{/logout}">logout</a></li>
+</ul>
+<hr>
+<br>
+<h1>New advertisement</h1>
 <div th:if="${param.error}">
     Something went wrong.
 </div>
@@ -16,9 +26,10 @@
         <input class="create-advertisement" type="text" th:field="*{title}" placeholder="title"/>
     </div>
     <br>
-    <textarea class="create-advertisement" rows="6" cols="50" th:field="*{description}" placeholder="enter description here..."/>
+    <textarea class="create-advertisement" rows="6" cols="50" th:field="*{description}"
+              placeholder="enter description here..."/>
     <br><br>
-    <input type="submit" value="create"/>
+    <input type="submit" value="publish"/>
 </form>
 </body>
 <footer>

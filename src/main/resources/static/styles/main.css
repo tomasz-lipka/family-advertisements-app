@@ -22,7 +22,7 @@ footer {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #04AA6D;
+  background-color: #FF5733;
   border: none;
   color: white;
   padding: 8px 32px;
@@ -33,14 +33,32 @@ input[type=button], input[type=submit], input[type=reset] {
 
 .create-advertisement{
   text-align: left;
-  width: 500px
+  width: 500px;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+hr {
+  color: #FF5733;
 }
-li {
-  display: inline;
+
+.adv-title{
+  color: #FF5733;
+  line-height: 0.7;
+}
+
+.adv-date{
+  font-size: 0.8em;
+  color: gray;
+}
+#container{
+  height: 150px;
+}
+
+#left{
+  float:left;
+  width:30%;
+}
+
+#right{
+  float: right;
+  width:70%;
 }
