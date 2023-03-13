@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/home.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
@@ -17,8 +18,8 @@
 <hr>
 <br>
 <tr th:each="advertisement: ${advertisements}">
-    <div id="container">
-        <div id="left">
+    <div id="container-div">
+        <div id="left-div">
             <h2 class="adv-title">
                 <td th:text="${advertisement.title}"/>
             </h2>
@@ -26,7 +27,7 @@
             <td th:text="'created: ' + ${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"/>
             </p>
         </div>
-        <div id="right">
+        <div id="right-div">
             <p>
             <td th:text="${advertisement.description}"/>
             </p>

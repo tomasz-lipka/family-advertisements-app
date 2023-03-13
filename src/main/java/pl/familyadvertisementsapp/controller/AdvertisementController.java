@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
 
+import java.security.Principal;
+
 @Controller
 public class AdvertisementController {
 

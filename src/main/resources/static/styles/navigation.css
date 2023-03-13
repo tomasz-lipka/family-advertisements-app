@@ -1,3 +1,7 @@
+hr {
+  color: #FF5733;
+}
+
 .center {
   text-align:center
 }
@@ -10,10 +14,6 @@ a {
   padding: 20px;
   text-decoration: none;
   font-size: 20px;
-}
-
-a:hover{
-  color: gray;
 }
 
 .active {

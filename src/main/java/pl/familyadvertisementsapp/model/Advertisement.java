@@ -19,6 +19,8 @@ public class Advertisement {
 
     private Date created;
 
+    private long appUserId;
+
     public Advertisement() {
     }
 
@@ -52,5 +54,13 @@ public class Advertisement {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public Long getAppUserId() {
+        return appUserId;
+    }
+
+    public void setAppUserId(Long appUserId) {
+        this.appUserId = appUserId;
     }
 }

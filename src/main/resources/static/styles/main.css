@@ -1,24 +1,9 @@
 body {
-  text-align: center;
   background-color: #344955;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-a {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-input{
-  text-align: center;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  margin-right: 70px;
+  margin-left: 70px;
 }
 
 input[type=button], input[type=submit], input[type=reset] {
@@ -31,34 +16,10 @@ input[type=button], input[type=submit], input[type=reset] {
   font-size: 1em;
 }
 
-.create-advertisement{
-  text-align: left;
-  width: 500px;
+a {
+  color: white;
 }
 
-hr {
-  color: #FF5733;
-}
-
-.adv-title{
-  color: #FF5733;
-  line-height: 0.7;
-}
-
-.adv-date{
-  font-size: 0.8em;
+a:hover {
   color: gray;
-}
-#container{
-  height: 150px;
-}
-
-#left{
-  float:left;
-  width:30%;
-}
-
-#right{
-  float: right;
-  width:70%;
 }

@@ -12,15 +12,15 @@ import pl.familyadvertisementsapp.repository.AppUserRepository;
 public class AppUserService implements UserDetailsService {
 
     @Autowired
-    private AppUserRepository userRepository;
+    private AppUserRepository appUserRepository;
 
     public void createUser(AppUser appUser) {
-        userRepository.save(appUser);
+        appUserRepository.save(appUser);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        AppUser appUser = userRepository.findByUsername(username);
+        AppUser appUser = appUserRepository.findByUsername(username);
 //        if (user == null) {
 //            throw new UsernameNotFoundException(username);
 //        }
@@ -32,4 +32,6 @@ public class AppUserService implements UserDetailsService {
                 .roles("USER")
                 .build();
     }
+
+
 }

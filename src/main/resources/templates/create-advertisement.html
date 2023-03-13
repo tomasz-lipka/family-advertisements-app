@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/create-advertisement.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
@@ -15,7 +16,6 @@
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
 <hr>
-<br>
 <h1>New advertisement</h1>
 <div th:if="${param.error}">
     Something went wrong.
