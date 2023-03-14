@@ -4,20 +4,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/home.css}" rel="stylesheet">
+    <link th:href="@{/styles/my-advertisements.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
-    <li><a class="active" th:href="@{/}">home</a></li>
+    <li><a th:href="@{/}">home</a></li>
     •
     <li><a th:href="@{/advertisements/create}">create advertisement</a></li>
     •
-    <li><a th:href="@{/my-advertisements}">my advertisements</a></li>
+    <li><a class="active" th:href="@{/my-advertisements}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
 <hr>
+<h1>my advertisements</h1>
 <br>
 <tr th:each="advertisement: ${advertisements}">
     <div id="container-div">
@@ -36,6 +37,10 @@
             <p>
             <td th:text="${advertisement.description}"/>
             </p>
+        </div>
+        <div id="bottom-div">
+            <a class="button" th:href="@{/edit-advertisement/edit(advertisementId=${advertisement.id})}">edit</a>
+            <a class="button" th:href="@{/my-advertisements/delete(advertisementId=${advertisement.id})}">delete</a>
         </div>
     </div>
     <br>

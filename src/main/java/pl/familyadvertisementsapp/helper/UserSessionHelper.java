@@ -17,13 +17,8 @@ public class UserSessionHelper {
         this.appUserRepository = appUserRepository;
     }
 
-    private String getCurrentPrincipalName() {
+    public String getCurrentPrincipalName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();
-    }
-
-    public AppUser getCurrentLoggedAppUser() {
-        String username = getCurrentPrincipalName();
-        return appUserRepository.findByUsername(username);
     }
 }

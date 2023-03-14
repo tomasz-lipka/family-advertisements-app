@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.controller.thymeleaf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +12,12 @@ import java.util.Collection;
 @Controller
 public class HomePageController {
 
-    @Autowired
     private AdvertisementService advertisementService;
+
+    @Autowired
+    public HomePageController(AdvertisementService advertisementService) {
+        this.advertisementService = advertisementService;
+    }
 
     @GetMapping("/")
     public String getAllAdvertisements(Model model) {

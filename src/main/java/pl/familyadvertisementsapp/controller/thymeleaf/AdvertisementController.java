@@ -1,31 +1,32 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.controller.thymeleaf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
 
-import java.security.Principal;
-
-@Controller
+@RestController()
+@RequestMapping("advertisements")
 public class AdvertisementController {
 
-    @Autowired
-    AdvertisementService advertisementService;
+    private AdvertisementService advertisementService;
 
-    @GetMapping("/create-advertisement")
+    @Autowired
+    public AdvertisementController(AdvertisementService advertisementService) {
+        this.advertisementService = advertisementService;
+    }
+
+    @GetMapping("/create")
     public String createAdvertisement(Model model) {
         Advertisement advertisement = new Advertisement();
         model.addAttribute("advertisement", advertisement);
-        return "create-advertisement";
+        return "create";
     }
 
     //TODO validate max descirption and title to fit in div
-    @PostMapping("/create-advertisement")
+    @PostMapping("/create")
     public void createAdvertisement(@ModelAttribute Advertisement advertisement, Model model) {
         model.addAttribute("advertisement", advertisement);
         advertisementService.createAdvertisement(advertisement);

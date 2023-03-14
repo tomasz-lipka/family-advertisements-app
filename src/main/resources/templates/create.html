@@ -4,35 +4,37 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/create-advertisement.css}" rel="stylesheet">
+    <link th:href="@{/styles/create.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
     <li><a th:href="@{/}">home</a></li>
     •
-    <li><a class="active" th:href="@{/create-advertisement}">create advertisement</a></li>
+    <li><a class="active" th:href="@{/advertisements/create}">create advertisement</a></li>
+    •
+    <li><a th:href="@{/my-advertisements}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
 <hr>
-<h1>New advertisement</h1>
+<h1>new advertisement</h1>
 <div th:if="${param.error}">
     Something went wrong.
 </div>
 <br>
-<form th:action="@{/create-advertisement}" th:object="${advertisement}" method="post">
+<form th:action="@{/advertisements/create}" th:object="${advertisement}" method="post">
     <div>
-        <input class="create-advertisement" type="text" th:field="*{title}" placeholder="title"/>
+        <input class="input" type="text" th:field="*{title}" placeholder="title"/>
     </div>
     <br>
-    <textarea class="create-advertisement" rows="6" cols="50" th:field="*{description}"
+    <textarea class="input" rows="6" cols="50" th:field="*{description}"
               placeholder="enter description here..."/>
     <br><br>
     <input type="submit" value="publish"/>
 </form>
 </body>
-<footer>
-    <p><small>2023 • TL</small></p>
-</footer>
+<!--<footer>-->
+<!--    <p><small>2023 • TL</small></p>-->
+<!--</footer>-->
 </html>

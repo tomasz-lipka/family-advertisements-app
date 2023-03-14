@@ -19,7 +19,7 @@ public class Advertisement {
 
     private Date created;
 
-    private long appUserId;
+    private String appUserUsername;
 
     public Advertisement() {
     }
@@ -56,11 +56,11 @@ public class Advertisement {
         this.created = created;
     }
 
-    public Long getAppUserId() {
-        return appUserId;
+    public String getAppUserUsername() {
+        return appUserUsername;
     }
 
-    public void setAppUserId(Long appUserId) {
-        this.appUserId = appUserId;
+    public void setAppUserUsername(String appUserUsername) {
+        this.appUserUsername = appUserUsername;
     }
 }
