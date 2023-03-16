@@ -11,27 +11,27 @@
 <ul class="center">
     <li><a th:href="@{/thymeleaf/advertisements}">home</a></li>
     •
-    <li><a class="active" th:href="@{/thymeleaf/advertisements/create}">create advertisement</a></li>
+    <li><a th:href="@{/thymeleaf/advertisements/create}">create advertisement</a></li>
     •
-    <li><a th:href="@{/thymeleaf/advertisements/my}">my advertisements</a></li>
+    <li><a class="active" th:href="@{/thymeleaf/advertisements/my}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
 <hr>
-<h1>new advertisement</h1>
+<h1>edit advertisement</h1>
 <div th:if="${param.error}">
     Something went wrong.
 </div>
 <br>
-<form th:action="@{/thymeleaf/advertisements/create}" th:object="${advertisement}" method="POST">
+<form th:action="@{/thymeleaf/advertisements/update}" th:object="${advertisement}" method="POST">
+    <input type="hidden" th:field="*{id}"/>
     <div>
-        <input class="input" type="text" th:field="*{title}" placeholder="title"/>
+        <input class="input" type="text" th:field="*{title}"/>
     </div>
     <br>
-    <textarea class="input" rows="6" cols="50" th:field="*{description}"
-              placeholder="enter description here..."/>
+    <textarea class="input" rows="6" cols="50" th:field="*{description}"/>
     <br><br>
-    <input type="submit" value="publish"/>
+    <input type="submit" value="update"/>
 </form>
 </body>
 <!--<footer>-->

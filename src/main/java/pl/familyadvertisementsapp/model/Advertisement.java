@@ -63,4 +63,6 @@ public class Advertisement {
     public void setAppUserUsername(String appUserUsername) {
         this.appUserUsername = appUserUsername;
     }
+
+
 }

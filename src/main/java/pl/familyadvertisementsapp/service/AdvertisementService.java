@@ -1,10 +1,8 @@
 package pl.familyadvertisementsapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.helper.UserSessionHelper;
 import pl.familyadvertisementsapp.model.Advertisement;
-import pl.familyadvertisementsapp.model.AppUser;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
 import java.util.Collection;
@@ -13,26 +11,35 @@ import java.util.Date;
 @Service
 public class AdvertisementService {
 
-    //TODO inject all by constructor
+    //TODO check if all fields are injected by constructor
+
     private AdvertisementRepository advertisementRepository;
 
     private UserSessionHelper userSessionHelper;
 
-    @Autowired
     public AdvertisementService(UserSessionHelper userSessionHelper, AdvertisementRepository advertisementRepository) {
         this.userSessionHelper = userSessionHelper;
         this.advertisementRepository = advertisementRepository;
     }
 
-    public void createAdvertisement(Advertisement advertisement) {
-        advertisement.setCreated(new Date());
-        String owner = userSessionHelper.getCurrentPrincipalName();
-        advertisement.setAppUserUsername(owner);
-        advertisementRepository.save(advertisement);
-    }
-
     public Collection<Advertisement> getAll() {
         return advertisementRepository.findAll();
+    }
+
+    public Advertisement getById(Long id) {
+        return advertisementRepository.findById(id).get();
+    }
+
+    public Advertisement create(Advertisement advertisement) {
+        String owner = userSessionHelper.getCurrentPrincipalName();
+        advertisement.setCreated(new Date());
+        advertisement.setAppUserUsername(owner);
+        advertisementRepository.save(advertisement);
+        return advertisement;
+    }
+
+    public void deleteById(Long id) {
+        advertisementRepository.deleteById(id);
     }
 
     public Collection<Advertisement> getOwned() {
@@ -40,7 +47,11 @@ public class AdvertisementService {
         return advertisementRepository.findByAppUserUsername(owner);
     }
 
-    public void deleteById(Long advertisementId) {
-        advertisementRepository.deleteById(advertisementId);
+    public Advertisement update(Advertisement advertisement) {
+        Advertisement update = getById(advertisement.getId());
+        update.setTitle(advertisement.getTitle());
+        update.setDescription(advertisement.getDescription());
+        update.setCreated(new Date());
+        return advertisementRepository.save(update);
     }
 }
