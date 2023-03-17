@@ -4,15 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/login-and-register.css}" rel="stylesheet">
+    <link th:href="@{/styles/center.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Create account</h1>
-<div th:if="${param.error}">
-    Something went wrong.
-</div>
+<!--<div th:if="${param.error}">-->
+<!--    Something went wrong.-->
+<!--</div>-->
 <br>
-<form th:action="@{/register}" th:object="${appuser}" method="post">
+<form th:action="@{/registration}" th:object="${appuser}" th:method="POST">
     <div>
         <input type="text" th:field="*{username}" placeholder="username"/>
     </div>
@@ -28,9 +28,6 @@
     <input type="submit" value="sign up"/>
 </form>
 <br><br>
-<a th:href="@{/login}">sing in</a>
+<a th:href="@{/authentication}">sing in</a>
 </body>
-<!--<footer>-->
-<!--    <p><small>2023 • TL</small></p>-->
-<!--</footer>-->
 </html>

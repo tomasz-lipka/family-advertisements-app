@@ -5,13 +5,10 @@ import pl.familyadvertisementsapp.helper.UserSessionHelper;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class AdvertisementService {
-
-    //TODO check if all fields are injected by constructor
 
     private AdvertisementRepository advertisementRepository;
 
@@ -22,8 +19,10 @@ public class AdvertisementService {
         this.advertisementRepository = advertisementRepository;
     }
 
-    public Collection<Advertisement> getAll() {
-        return advertisementRepository.findAll();
+    public List<Advertisement> getAll() {
+        List<Advertisement> advertisements = advertisementRepository.findAll();
+        Collections.sort(advertisements);
+        return advertisements;
     }
 
     public Advertisement getById(Long id) {
@@ -42,9 +41,11 @@ public class AdvertisementService {
         advertisementRepository.deleteById(id);
     }
 
-    public Collection<Advertisement> getOwned() {
+    public List<Advertisement> getOwned() {
         String owner = userSessionHelper.getCurrentPrincipalName();
-        return advertisementRepository.findByAppUserUsername(owner);
+        List<Advertisement> advertisements = advertisementRepository.findByAppUserUsername(owner);
+        Collections.sort(advertisements);
+        return advertisements;
     }
 
     public Advertisement update(Advertisement advertisement) {

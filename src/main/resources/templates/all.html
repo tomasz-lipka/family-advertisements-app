@@ -4,16 +4,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/home.css}" rel="stylesheet">
+    <link th:href="@{/styles/all.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
-    <li><a class="active" th:href="@{/thymeleaf/advertisements}">home</a></li>
+    <li><a class="active" th:href="@{/advertisements/all}">home</a></li>
     •
-    <li><a th:href="@{/thymeleaf/advertisements/create}">create advertisement</a></li>
+    <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
     •
-    <li><a th:href="@{/thymeleaf/advertisements/my}">my advertisements</a></li>
+    <li><a th:href="@{/advertisements/my}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
@@ -41,7 +41,4 @@
     <br>
 </tr>
 </body>
-<!--<footer>-->
-<!--    <p><small>2023 • TL</small></p>-->
-<!--</footer>-->
 </html>

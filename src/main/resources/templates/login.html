@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/login-and-register.css}" rel="stylesheet">
+    <link th:href="@{/styles/center.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Family Advertisements</h1>
@@ -14,7 +14,7 @@
     Invalid username and password.
 </div>
 <br><br>
-<form th:action="@{/login}" method="post">
+<form th:action="@{/authentication}" method="post">
     <div>
         <input type="text" name="username" placeholder="username"/>
     </div>
@@ -26,9 +26,6 @@
     <input type="submit" value="sign in"/>
 </form>
 <br><br>
-<a th:href="@{/register}">sing up</a>
+<a th:href="@{/registration}">sing up</a>
 </body>
-<!--<footer>-->
-<!--    <p><small>2023 • TL</small></p>-->
-<!--</footer>-->
 </html>

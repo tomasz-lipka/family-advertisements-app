@@ -9,11 +9,11 @@
 </head>
 <body>
 <ul class="center">
-    <li><a th:href="@{/thymeleaf/advertisements}">home</a></li>
+    <li><a th:href="@{/advertisements/all}">home</a></li>
     •
-    <li><a th:href="@{/thymeleaf/advertisements/create}">create advertisement</a></li>
+    <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
     •
-    <li><a class="active" th:href="@{/thymeleaf/advertisements/my}">my advertisements</a></li>
+    <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
@@ -39,14 +39,15 @@
             </p>
         </div>
         <div id="bottom-div">
-            <a class="button" th:href="@{/thymeleaf/advertisements/update/{id}(id = ${advertisement.id})}">update</a>
-            <a class="button" th:href="@{/thymeleaf/advertisements/delete/{id}(id = ${advertisement.id})}">delete</a>
+            <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" class="float-right">
+                <input type="submit" value="update"/>
+            </form>
+            <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE" class="float-right">
+                <input type="submit" value="delete"/>
+            </form>
         </div>
     </div>
     <br>
 </tr>
 </body>
-<!--<footer>-->
-<!--    <p><small>2023 • TL</small></p>-->
-<!--</footer>-->
 </html>

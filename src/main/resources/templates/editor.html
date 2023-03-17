@@ -4,26 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/create.css}" rel="stylesheet">
+    <link th:href="@{/styles/creator.css}" rel="stylesheet">
     <link th:href="@{/styles/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
-    <li><a th:href="@{/thymeleaf/advertisements}">home</a></li>
+    <li><a th:href="@{/advertisements/all}">home</a></li>
     •
-    <li><a th:href="@{/thymeleaf/advertisements/create}">create advertisement</a></li>
+    <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
     •
-    <li><a class="active" th:href="@{/thymeleaf/advertisements/my}">my advertisements</a></li>
+    <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
     •
     <li><a th:href="@{/logout}">logout</a></li>
 </ul>
 <hr>
 <h1>edit advertisement</h1>
-<div th:if="${param.error}">
-    Something went wrong.
-</div>
+<!--<div th:if="${param.error}">-->
+<!--    Something went wrong.-->
+<!--</div>-->
 <br>
-<form th:action="@{/thymeleaf/advertisements/update}" th:object="${advertisement}" method="POST">
+<form th:action="@{/advertisements}" th:object="${advertisement}" th:method="PUT">
     <input type="hidden" th:field="*{id}"/>
     <div>
         <input class="input" type="text" th:field="*{title}"/>
@@ -34,7 +34,4 @@
     <input type="submit" value="update"/>
 </form>
 </body>
-<!--<footer>-->
-<!--    <p><small>2023 • TL</small></p>-->
-<!--</footer>-->
 </html>

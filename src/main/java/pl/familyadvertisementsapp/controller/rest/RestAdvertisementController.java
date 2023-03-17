@@ -12,6 +12,8 @@ import java.util.Collection;
 @RequestMapping("rest")
 public class RestAdvertisementController {
 
+    //TODO update changes to reflect thymleaf controller
+
     private AdvertisementService advertisementService;
 
     public RestAdvertisementController(AdvertisementService advertisementService) {

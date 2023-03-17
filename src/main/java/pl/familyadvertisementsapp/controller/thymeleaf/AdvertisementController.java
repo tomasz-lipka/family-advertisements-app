@@ -7,33 +7,34 @@ import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
 
 import java.util.Collection;
+import java.util.List;
 
 @Controller
-@RequestMapping("thymeleaf/advertisements")
-public class ThymeleafAdvertisementController {
+@RequestMapping("/advertisements")
+public class AdvertisementController {
 
     private AdvertisementService advertisementService;
 
-    public ThymeleafAdvertisementController(AdvertisementService advertisementService) {
+    public AdvertisementController(AdvertisementService advertisementService) {
         this.advertisementService = advertisementService;
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public String getAll(Model model) {
-        Collection<Advertisement> advertisements = advertisementService.getAll();
+        List<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
-        return "home";
+        return "all";
     }
 
-    @GetMapping("/create")
-    public String create(Model model) {
+    @GetMapping("/creator")
+    public String getCreator(Model model) {
         Advertisement advertisement = new Advertisement();
         model.addAttribute("advertisement", advertisement);
-        return "create";
+        return "creator";
     }
 
     //TODO validate max descirption and title to fit in div
-    @PostMapping("/create")
+    @PostMapping()
     public String create(@ModelAttribute Advertisement advertisement, Model model) {
         model.addAttribute("advertisement", advertisement);
         advertisementService.create(advertisement);
@@ -47,25 +48,22 @@ public class ThymeleafAdvertisementController {
         return "my";
     }
 
-    //TODO how to make @DeleteMapping
-    @GetMapping("/delete/{id}")
-    public String deleteAdvertisements(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
         advertisementService.deleteById(id);
         return "success";
     }
 
-    @GetMapping("/update/{id}")
-    public String update(@PathVariable Long id, Model model) {
+    @GetMapping("/{id}/editor")
+    public String getEditor(@PathVariable Long id, Model model) {
         Advertisement advertisement = advertisementService.getById(id);
         model.addAttribute("advertisement", advertisement);
-        return "update";
+        return "editor";
     }
 
-    //TODO make PUT
-    @PostMapping("/update")
+    @PutMapping()
     public String update(@ModelAttribute Advertisement advertisement, Model model) {
         model.addAttribute("advertisement", advertisement);
-        System.out.println();
         advertisementService.update(advertisement);
         return "success";
     }

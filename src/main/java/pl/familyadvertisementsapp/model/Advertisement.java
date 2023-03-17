@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Advertisement {
+public class Advertisement implements Comparable<Advertisement> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,5 +64,20 @@ public class Advertisement {
         this.appUserUsername = appUserUsername;
     }
 
+    @Override
+    public int compareTo(Advertisement advertisement) {
+        long thisMilis = created.getTime();
+        long anotherMilis = advertisement.getCreated().getTime();
 
+        return Long.compare(anotherMilis, thisMilis);
+    }
+
+    //TODO delete toString
+    @Override
+    public String toString() {
+        return "Advertisement{" +
+                "title='" + title + '\'' +
+                ", created=" + created +
+                '}';
+    }
 }

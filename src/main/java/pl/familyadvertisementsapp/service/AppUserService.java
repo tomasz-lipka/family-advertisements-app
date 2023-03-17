@@ -1,6 +1,5 @@
 package pl.familyadvertisementsapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,11 +10,14 @@ import pl.familyadvertisementsapp.repository.AppUserRepository;
 @Service
 public class AppUserService implements UserDetailsService {
 
-    @Autowired
     private AppUserRepository appUserRepository;
 
-    public void createUser(AppUser appUser) {
-        appUserRepository.save(appUser);
+    public AppUserService(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
+
+    public AppUser createAppUser(AppUser appUser) {
+        return appUserRepository.save(appUser);
     }
 
     @Override
@@ -32,6 +34,4 @@ public class AppUserService implements UserDetailsService {
                 .roles("USER")
                 .build();
     }
-
-
 }

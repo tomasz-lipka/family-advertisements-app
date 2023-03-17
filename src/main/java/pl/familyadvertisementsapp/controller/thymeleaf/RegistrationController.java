@@ -1,31 +1,36 @@
 package pl.familyadvertisementsapp.controller.thymeleaf;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.model.AppUser;
 import pl.familyadvertisementsapp.service.AppUserService;
 
-//TODO @RestController or add  @ResponseBody to methods
 @Controller
+@RequestMapping("registration")
 public class RegistrationController {
 
-    @Autowired
-    private AppUserService userService;
+    private AppUserService appUserService;
 
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
+    public RegistrationController(AppUserService userService) {
+        this.appUserService = userService;
+    }
+
+    @GetMapping()
+    public String getRegister(Model model) {
         AppUser appUser = new AppUser();
         model.addAttribute("appuser", appUser);
         return "register";
     }
 
-    @PostMapping("/register")
-    //TODO RequestBody instead of ModelAtrribute?
+    @PostMapping()
     //TODO is ModelAttribute safe for passwords?
-    public void registerUserAccount(@ModelAttribute AppUser appUser, Model model) {
+    public String createAppUser(@ModelAttribute AppUser appUser, Model model) {
+        System.out.println("crete");
         model.addAttribute("appuser", appUser);
-        userService.createUser(appUser);
+        appUserService.createAppUser(appUser);
+        //TODO validate success
+        //TODO message
+        return "login";
     }
 }

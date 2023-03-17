@@ -24,10 +24,10 @@ public class SecurityConfiguration {
         return http.httpBasic()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/styles/**", "/register").permitAll()
+                .requestMatchers("/styles/**", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/authentication").permitAll()
                 .and().logout()
                 .and().build();
     }
