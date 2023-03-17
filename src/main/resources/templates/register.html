@@ -8,22 +8,22 @@
 </head>
 <body>
 <h1>Create account</h1>
-<!--<div th:if="${param.error}">-->
-<!--    Something went wrong.-->
-<!--</div>-->
+<div th:if="${param.error}">
+    Something went wrong.
+</div>
 <br>
 <form th:action="@{/registration}" th:object="${appuser}" th:method="POST">
     <div>
-        <input type="text" th:field="*{username}" placeholder="username"/>
+        <input type="text" th:field="*{username}" placeholder="username" minlength="1" maxlength="10"/>
     </div>
     <br>
     <div>
-        <input type="password" th:field="*{password}" placeholder="password"/>
+        <input type="password" th:field="*{password}" placeholder="password" minlength="1"/>
     </div>
-<!--    <br>-->
-<!--    <div>-->
-<!--        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password"/>-->
-<!--    </div>-->
+    <!--    <br>-->
+    <!--    <div>-->
+    <!--        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password"/>-->
+    <!--    </div>-->
     <br>
     <input type="submit" value="sign up"/>
 </form>

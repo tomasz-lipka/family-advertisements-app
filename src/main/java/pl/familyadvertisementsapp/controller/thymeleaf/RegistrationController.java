@@ -17,6 +17,7 @@ public class RegistrationController {
     }
 
     @GetMapping()
+    //TODO getRegisterPage ??
     public String getRegister(Model model) {
         AppUser appUser = new AppUser();
         model.addAttribute("appuser", appUser);
@@ -26,11 +27,9 @@ public class RegistrationController {
     @PostMapping()
     //TODO is ModelAttribute safe for passwords?
     public String createAppUser(@ModelAttribute AppUser appUser, Model model) {
-        System.out.println("crete");
         model.addAttribute("appuser", appUser);
         appUserService.createAppUser(appUser);
         //TODO validate success
-        //TODO message
-        return "login";
+        return "usercreated";
     }
 }

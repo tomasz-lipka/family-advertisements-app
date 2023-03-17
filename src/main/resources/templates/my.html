@@ -20,6 +20,9 @@
 <hr>
 <h1>my advertisements</h1>
 <br>
+<div th:if="${#lists.isEmpty(advertisements)}">
+    You have no advertisments.
+</div>
 <tr th:each="advertisement: ${advertisements}">
     <div id="container-div">
         <div id="left-div">
@@ -40,7 +43,7 @@
         </div>
         <div id="bottom-div">
             <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" class="float-right">
-                <input type="submit" value="update"/>
+                <input type="submit" value="edit"/>
             </form>
             <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE" class="float-right">
                 <input type="submit" value="delete"/>

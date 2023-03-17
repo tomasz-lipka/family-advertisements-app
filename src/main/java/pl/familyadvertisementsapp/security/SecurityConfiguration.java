@@ -1,6 +1,5 @@
 package pl.familyadvertisementsapp.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import pl.familyadvertisementsapp.service.AppUserService;
 
@@ -16,12 +16,19 @@ import pl.familyadvertisementsapp.service.AppUserService;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    @Autowired
-    private AppUserService appUserService;
+//    private final UserDetailsService userDetailsService;
+//
+//    public SecurityConfiguration(UserDetailsService userDetailsService) {
+//        this.userDetailsService = userDetailsService;
+//    }
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.httpBasic()
+        return http
+//                .userDetailsService(userDetailsService)
+
+                .httpBasic()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/styles/**", "/registration").permitAll()

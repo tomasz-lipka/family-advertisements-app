@@ -25,11 +25,13 @@
 <br>
 <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="PUT">
     <input type="hidden" th:field="*{id}"/>
+    <h3>title</h3>
     <div>
-        <input class="input" type="text" th:field="*{title}"/>
+        <input class="input" type="text" th:field="*{title}" minlength="5" maxlength="20"/>
     </div>
     <br>
-    <textarea class="input" rows="6" cols="50" th:field="*{description}"/>
+    <h3>description</h3>
+    <textarea class="input" rows="10" cols="50" th:field="*{description}" minlength="20" maxlength="600"/>
     <br><br>
     <input type="submit" value="update"/>
 </form>

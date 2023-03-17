@@ -6,7 +6,7 @@ body {
   margin-left: 70px;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], .button {
   background-color: #FF5733;
   border: none;
   color: white;

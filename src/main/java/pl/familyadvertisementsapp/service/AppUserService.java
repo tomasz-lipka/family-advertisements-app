@@ -16,8 +16,14 @@ public class AppUserService implements UserDetailsService {
         this.appUserRepository = appUserRepository;
     }
 
-    public AppUser createAppUser(AppUser appUser) {
-        return appUserRepository.save(appUser);
+    public AppUser createAppUser(AppUser appUser) throws Exception {
+        if (!userExists(appUser.getUsername())) {
+            return appUserRepository.save(appUser);
+        } else {
+            //TODO create exception
+            throw new Exception();
+        }
+
     }
 
     @Override
@@ -33,5 +39,9 @@ public class AppUserService implements UserDetailsService {
                 //TODO not hardcode role
                 .roles("USER")
                 .build();
+    }
+
+    public boolean userExists(String username) {
+        return appUserRepository.findByUsername(username) != null;
     }
 }

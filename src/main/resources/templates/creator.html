@@ -25,11 +25,11 @@
 <br>
 <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="POST">
     <div>
-        <input class="input" type="text" th:field="*{title}" placeholder="title"/>
+        <input class="input" type="text" th:field="*{title}" placeholder="enter title here..." minlength="5" maxlength="20"/>
     </div>
     <br>
     <textarea class="input" rows="6" cols="50" th:field="*{description}"
-              placeholder="enter description here..."/>
+              placeholder="enter description here..." minlength="20" maxlength="600"/>
     <br><br>
     <input type="submit" value="publish"/>
 </form>
