@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/my.css}" rel="stylesheet">
-    <link th:href="@{/styles/navigation.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/specific/my.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
@@ -19,10 +19,19 @@
 </ul>
 <hr>
 <h1>my advertisements</h1>
+<h3 th:if="${#lists.isEmpty(advertisements)}">
+    You have no advertisements.
+</h3>
+<h3 class="success" th:if="${param.created}">
+    New advertisement created!
+</h3>
+<h3 class="success" th:if="${param.deleted}">
+    Advertisement deleted!
+</h3>
+<h3 class="success" th:if="${param.updated}">
+    Advertisement updated!
+</h3>
 <br>
-<div th:if="${#lists.isEmpty(advertisements)}">
-    You have no advertisments.
-</div>
 <tr th:each="advertisement: ${advertisements}">
     <div id="container-div">
         <div id="left-div">

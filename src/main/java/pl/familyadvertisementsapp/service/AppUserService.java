@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import pl.familyadvertisementsapp.exception.AppUserServiceException;
 import pl.familyadvertisementsapp.model.AppUser;
 import pl.familyadvertisementsapp.repository.AppUserRepository;
 
@@ -16,14 +17,12 @@ public class AppUserService implements UserDetailsService {
         this.appUserRepository = appUserRepository;
     }
 
-    public AppUser createAppUser(AppUser appUser) throws Exception {
+    public void createAppUser(AppUser appUser) throws AppUserServiceException {
         if (!userExists(appUser.getUsername())) {
-            return appUserRepository.save(appUser);
+            appUserRepository.save(appUser);
         } else {
-            //TODO create exception
-            throw new Exception();
+            throw new AppUserServiceException("AppUser with that username already exists.");
         }
-
     }
 
     @Override
@@ -41,7 +40,7 @@ public class AppUserService implements UserDetailsService {
                 .build();
     }
 
-    public boolean userExists(String username) {
+    private boolean userExists(String username) {
         return appUserRepository.findByUsername(username) != null;
     }
 }

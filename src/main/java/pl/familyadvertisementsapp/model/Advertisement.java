@@ -13,7 +13,6 @@ public class Advertisement implements Comparable<Advertisement> {
 
     private String title;
 
-    //TODO validate that in UI
     @Column(length = 9999)
     private String description;
 

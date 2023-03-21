@@ -1,6 +1,7 @@
 package pl.familyadvertisementsapp.service;
 
 import org.springframework.stereotype.Service;
+import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.helper.UserSessionHelper;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
@@ -25,7 +26,9 @@ public class AdvertisementService {
         return advertisements;
     }
 
-    public Advertisement getById(Long id) {
+
+    public Advertisement getById(Long id) throws AdvertisementServiceException {
+        throwExceptionIfNotFound(id);
         return advertisementRepository.findById(id).get();
     }
 
@@ -37,7 +40,8 @@ public class AdvertisementService {
         return advertisement;
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id) throws AdvertisementServiceException {
+        throwExceptionIfNotFound(id);
         advertisementRepository.deleteById(id);
     }
 
@@ -48,11 +52,17 @@ public class AdvertisementService {
         return advertisements;
     }
 
-    public Advertisement update(Advertisement advertisement) {
-        Advertisement update = getById(advertisement.getId());
-        update.setTitle(advertisement.getTitle());
-        update.setDescription(advertisement.getDescription());
-        update.setCreated(new Date());
-        return advertisementRepository.save(update);
+    public Advertisement update(Advertisement advertisement) throws AdvertisementServiceException {
+        Advertisement altered = getById(advertisement.getId());
+        altered.setTitle(advertisement.getTitle());
+        altered.setDescription(advertisement.getDescription());
+        altered.setCreated(new Date());
+        return advertisementRepository.save(altered);
+    }
+
+    private void throwExceptionIfNotFound(Long id) throws AdvertisementServiceException {
+        if (advertisementRepository.findById(id).isEmpty()) {
+            throw new AdvertisementServiceException("Advertisement with the given id doesn't exist.");
+        }
     }
 }

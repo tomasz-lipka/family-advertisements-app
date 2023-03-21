@@ -23,3 +23,11 @@ a {
 a:hover {
   color: gray;
 }
+
+.error {
+  color: salmon;
+}
+
+.success {
+  color: #AFE1AF;
+}

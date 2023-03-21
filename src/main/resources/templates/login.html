@@ -3,15 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/center.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/center.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Family Advertisements</h1>
 <p>Simple app to share advertisements with your family and friends</p>
 
-<div th:if="${param.error}">
-    Invalid username and password.
+<div class="error" th:if="${param.error}">
+    Invalid username and/or password.
 </div>
 <br><br>
 <form th:action="@{/authentication}" method="POST">

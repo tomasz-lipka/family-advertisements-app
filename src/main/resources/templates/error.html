@@ -3,13 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/navigation.css}" rel="stylesheet">
-    <link th:href="@{/styles/center.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/center.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/navigation.css}" rel="stylesheet">
 </head>
 <body>
 <ul class="center">
-    <li><a th:href="@{/advertisements/all}">home</a></li>
+    <li><a class="active" th:href="@{/advertisements/all}">home</a></li>
     •
     <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
     •
@@ -19,7 +19,6 @@
 </ul>
 <hr>
 <br>
-<h3>Success!</h3>
+<h3 class="error" th:if="${errorMessage}" th:text="${errorMessage}"></h3>
 </body>
 </html>
-

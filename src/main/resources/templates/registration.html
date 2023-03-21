@@ -3,13 +3,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/center.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+    <link th:href="@{/styles/global/center.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Create account</h1>
-<div th:if="${param.error}">
-    Something went wrong.
+<div class="error" th:if="${param.error}">
+    User already exists. Please pick another username.
+</div>
+<div class="success" th:if="${param.created}">
+    User created! You can sign in.
 </div>
 <br>
 <form th:action="@{/registration}" th:object="${appuser}" th:method="POST">
