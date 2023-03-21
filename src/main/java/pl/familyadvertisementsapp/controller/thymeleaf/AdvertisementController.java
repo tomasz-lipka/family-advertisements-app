@@ -1,7 +1,11 @@
 package pl.familyadvertisementsapp.controller.thymeleaf;
 
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
@@ -12,15 +16,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/advertisements")
+@AllArgsConstructor
 public class AdvertisementController {
 
     private AdvertisementService advertisementService;
     private AppErrorController appErrorController;
-
-    public AdvertisementController(AdvertisementService advertisementService, AppErrorController appErrorController) {
-        this.advertisementService = advertisementService;
-        this.appErrorController = appErrorController;
-    }
 
     @GetMapping("/all")
     public String getAllView(Model model) {
@@ -55,7 +55,12 @@ public class AdvertisementController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute Advertisement advertisement, Model model) {
+    public String create(@ModelAttribute @Valid Advertisement advertisement, Model model, BindingResult result) {
+       result.addError(new FieldError("advertisement", "title","asd324"));
+        if (result.hasErrors()) {
+            System.out.println("22222");
+            return "redirect:/advertisements/creator";
+        }
         model.addAttribute("advertisement", advertisement);
         advertisementService.create(advertisement);
         return "redirect:/advertisements/my?created";
@@ -81,7 +86,5 @@ public class AdvertisementController {
             return appErrorController.getErrorView(model, e.getMessage());
         }
     }
-
-
 }
 

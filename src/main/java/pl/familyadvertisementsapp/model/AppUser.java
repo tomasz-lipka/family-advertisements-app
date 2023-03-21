@@ -4,30 +4,27 @@ package pl.familyadvertisementsapp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class AppUser {
 
-    //TODO NotNull Notempty Notblank
     @Id
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
+    @NotNull
+    @Size(min = 3, max = 10)
+    @NotBlank
     private String username;
 
+    @NotNull
+    @Size(min = 3)
+    @NotBlank
     private String password;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -8,20 +8,23 @@
 </head>
 <body>
 <h1>Create account</h1>
-<div class="error" th:if="${param.error}">
+<div class="error" th:if="${param.exists}">
     User already exists. Please pick another username.
 </div>
+<!--<div class="error" th:if="${param.blank}">-->
+<!--    User and/or password may not be blank.-->
+<!--</div>-->
 <div class="success" th:if="${param.success}">
     User created! You can sign in.
 </div>
 <br>
 <form th:action="@{/registration}" th:object="${appuser}" th:method="POST">
     <div>
-        <input type="text" th:field="*{username}" placeholder="username" minlength="1" maxlength="10"/>
+        <input type="text" th:field="*{username}" placeholder="username" minlength="3" maxlength="10" required="required" pattern=".*\S+.*"/>
     </div>
     <br>
     <div>
-        <input type="password" th:field="*{password}" placeholder="password" minlength="1"/>
+        <input type="password" th:field="*{password}" placeholder="password" minlength="3" required="required" pattern=".*\S+.*"/>
     </div>
     <br>
     <input type="submit" value="sign up"/>

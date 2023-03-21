@@ -25,17 +25,17 @@ a:hover {
 }
 
 .error {
-  color: salmon;
+  color: #FF5733;
   border-width: 1px;
-  border-style: solid;
-  border-color: salmon;
+  border-style: dashed;
+  border-color: #FF5733;
   padding: 1em;
 }
 
 .success {
   color: #AFE1AF;
   border-width: 1px;
-  border-style: solid;
+  border-style: dashed;
   border-color: #AFE1AF;
   padding: 1em;
 }

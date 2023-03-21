@@ -15,7 +15,7 @@
     •
     <li><a th:href="@{/advertisements/my}">my advertisements</a></li>
     •
-    <li><a th:href="@{/logout}">logout</a></li>
+    <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
 </ul>
 <hr>
 <h1>new advertisement</h1>
@@ -25,11 +25,14 @@
 <br>
 <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="POST">
     <div>
-        <input class="input" type="text" th:field="*{title}" placeholder="enter title here..." minlength="5" maxlength="20"/>
+        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        <input class="input" type="text" th:field="*{title}" placeholder="enter title here..." minlength="5"
+               maxlength="20" required="required"/>
+        <p th:if="${#fields.hasErrors('title')}">Invalid title</p>
     </div>
     <br>
     <textarea class="input" rows="6" cols="50" th:field="*{description}"
-              placeholder="enter description here..." minlength="20" maxlength="600"/>
+              placeholder="enter description here..." minlength="20" maxlength="600" required="required"/>
     <br><br>
     <input type="submit" value="publish"/>
 </form>

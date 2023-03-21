@@ -21,18 +21,9 @@ import pl.familyadvertisementsapp.service.AppUserService;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-//    private final UserDetailsService userDetailsService;
-//
-//    public SecurityConfiguration(UserDetailsService userDetailsService) {
-//        this.userDetailsService = userDetailsService;
-//    }
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-//                .userDetailsService(userDetailsService)
-
                 .httpBasic()
                 .and().csrf().disable()
                 .authorizeHttpRequests()

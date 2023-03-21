@@ -1,27 +1,21 @@
 package pl.familyadvertisementsapp.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.AppUserServiceException;
 import pl.familyadvertisementsapp.model.AppUser;
 import pl.familyadvertisementsapp.repository.AppUserRepository;
-import pl.familyadvertisementsapp.security.SecurityConfiguration;
 
 @Service
+@AllArgsConstructor
 public class AppUserService implements UserDetailsService {
 
     private static final String DEFAULT_ROLE = "USER";
     private AppUserRepository appUserRepository;
-    private SecurityConfiguration securityConfiguration;
-
-    public AppUserService(AppUserRepository appUserRepository, SecurityConfiguration securityConfiguration) {
-        this.appUserRepository = appUserRepository;
-        this.securityConfiguration = securityConfiguration;
-    }
 
     //TODO split method
     public void createAppUser(String username, String password) throws AppUserServiceException {

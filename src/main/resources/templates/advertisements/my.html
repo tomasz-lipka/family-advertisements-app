@@ -15,7 +15,7 @@
     •
     <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
     •
-    <li><a th:href="@{/logout}">logout</a></li>
+    <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
 </ul>
 <hr>
 <h1>my advertisements</h1>

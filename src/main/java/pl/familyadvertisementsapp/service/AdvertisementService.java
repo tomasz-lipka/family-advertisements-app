@@ -1,5 +1,6 @@
 package pl.familyadvertisementsapp.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.helper.UserSessionHelper;
@@ -9,16 +10,12 @@ import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 import java.util.*;
 
 @Service
+@AllArgsConstructor
 public class AdvertisementService {
 
     private AdvertisementRepository advertisementRepository;
 
     private UserSessionHelper userSessionHelper;
-
-    public AdvertisementService(UserSessionHelper userSessionHelper, AdvertisementRepository advertisementRepository) {
-        this.userSessionHelper = userSessionHelper;
-        this.advertisementRepository = advertisementRepository;
-    }
 
     public List<Advertisement> getAll() {
         List<Advertisement> advertisements = advertisementRepository.findAll();
