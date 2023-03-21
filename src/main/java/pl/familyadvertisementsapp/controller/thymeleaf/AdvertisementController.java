@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
@@ -20,7 +19,7 @@ import java.util.List;
 public class AdvertisementController {
 
     private AdvertisementService advertisementService;
-    private AppErrorController appErrorController;
+    private CustomErrorController customErrorController;
 
     @GetMapping("/all")
     public String getAllView(Model model) {
@@ -43,22 +42,10 @@ public class AdvertisementController {
         return "advertisements/creator";
     }
 
-    @GetMapping("/{id}/editor")
-    public String getEditorView(@PathVariable Long id, Model model) {
-        try {
-            Advertisement advertisement = advertisementService.getById(id);
-            model.addAttribute("advertisement", advertisement);
-            return "advertisements/editor";
-        } catch (AdvertisementServiceException e) {
-            return appErrorController.getErrorView(model, e.getMessage());
-        }
-    }
-
     @PostMapping()
-    public String create(@ModelAttribute @Valid Advertisement advertisement, BindingResult result, Model model) {
-//       result.addError(new FieldError("advertisement", "title","asd324"));
+    //TODO is @MODEL atrtributr needed?
+    public String create(@Valid Advertisement advertisement, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            System.out.println("22222");
             return "advertisements/creator";
         }
         model.addAttribute("advertisement", advertisement);
@@ -72,18 +59,29 @@ public class AdvertisementController {
             advertisementService.deleteById(id);
             return "redirect:/advertisements/my?deleted";
         } catch (AdvertisementServiceException e) {
-            return appErrorController.getErrorView(model, e.getMessage());
+            return customErrorController.getErrorView(model, e.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}/editor")
+    public String getEditorView(@PathVariable Long id, Model model) {
+        try {
+            Advertisement advertisement = advertisementService.getById(id);
+            model.addAttribute("advertisement", advertisement);
+            return "advertisements/editor";
+        } catch (AdvertisementServiceException e) {
+            return customErrorController.getErrorView(model, e.getMessage());
         }
     }
 
     @PutMapping()
-    public String update(@ModelAttribute Advertisement advertisement, Model model) {
+    public String update( Advertisement advertisement, Model model) {
         try {
-            model.addAttribute("advertisement", advertisement);
+//            model.addAttribute("advertisement", advertisement);
             advertisementService.update(advertisement);
             return "redirect:/advertisements/my?updated";
         } catch (AdvertisementServiceException e) {
-            return appErrorController.getErrorView(model, e.getMessage());
+            return customErrorController.getErrorView(model, e.getMessage());
         }
     }
 }

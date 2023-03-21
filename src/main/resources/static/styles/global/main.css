@@ -39,3 +39,7 @@ a:hover {
   border-color: #AFE1AF;
   padding: 1em;
 }
+
+.validation-error {
+  color: #FF5733;
+}

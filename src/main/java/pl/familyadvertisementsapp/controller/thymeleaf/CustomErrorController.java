@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AppErrorController implements ErrorController {
+public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
     //TODO split method
