@@ -26,8 +26,16 @@ a:hover {
 
 .error {
   color: salmon;
+  border-width: 1px;
+  border-style: solid;
+  border-color: salmon;
+  padding: 1em;
 }
 
 .success {
   color: #AFE1AF;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #AFE1AF;
+  padding: 1em;
 }

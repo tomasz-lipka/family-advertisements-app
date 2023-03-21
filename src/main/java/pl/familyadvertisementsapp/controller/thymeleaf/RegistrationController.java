@@ -33,6 +33,7 @@ public class RegistrationController {
         } catch (AppUserServiceException e) {
             return "redirect:/registration?error";
         }
+        System.out.println("success");
         return "redirect:/registration?success";
     }
 }
