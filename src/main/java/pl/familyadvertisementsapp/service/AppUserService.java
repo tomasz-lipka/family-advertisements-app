@@ -24,12 +24,11 @@ public class AppUserService implements UserDetailsService {
     }
 
     //TODO split method
-    public void createAppUser(AppUser appUserDto) throws AppUserServiceException {
-        if (!userExists(appUserDto.getUsername())) {
+    public void createAppUser(String username, String password) throws AppUserServiceException {
+        if (!userExists(username)) {
             AppUser appUser = new AppUser();
-            appUser.setUsername(appUserDto.getUsername());
-            PasswordEncoder passwordEncoder = securityConfiguration.encoder();
-            appUser.setPassword(passwordEncoder.encode(appUserDto.getPassword()));
+            appUser.setUsername(username);
+            appUser.setPassword(password);
             appUserRepository.save(appUser);
         } else {
             throw new AppUserServiceException("AppUser with that username already exists.");
@@ -43,18 +42,9 @@ public class AppUserService implements UserDetailsService {
         if (appUser == null) {
             throw new UsernameNotFoundException("User with that name not found.");
         }
-//        PasswordEncoder passwordEncoder = securityConfiguration.encoder();
-//        System.out.println("asdasdasd");
-//
-//        System.out.println(passwordEncoder.encode(appUser.getPassword()));
-//        passwordEncoder.matches()
-
-
         return User.builder()
                 .username(appUser.getUsername())
-                //TODO encode password
-//                .password("{noop}" + appUser.getPassword())
-                .password(passwordEncoder.encode(appUser.getPassword()))
+                .password(appUser.getPassword())
                 .roles(DEFAULT_ROLE)
                 .build();
     }

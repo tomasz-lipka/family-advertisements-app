@@ -39,6 +39,9 @@
 </ul>
 <hr>
 <br>
+<h3 th:if="${#lists.isEmpty(advertisements)}">
+    There are no advertisements.
+</h3>
 <tr th:each="advertisement: ${advertisements}">
     <div id="container-div">
         <div id="left-div">

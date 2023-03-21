@@ -1,10 +1,14 @@
 package pl.familyadvertisementsapp.model;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class AppUser {
 
+    //TODO NotNull Notempty Notblank
     @Id
     @Column(nullable = false, unique = true)
     private String username;
