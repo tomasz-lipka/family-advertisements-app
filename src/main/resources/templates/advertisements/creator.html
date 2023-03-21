@@ -25,14 +25,13 @@
 <br>
 <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="POST">
     <div>
-        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
         <input class="input" type="text" th:field="*{title}" placeholder="enter title here..." minlength="5"
                maxlength="20" required="required"/>
-        <p th:if="${#fields.hasErrors('title')}">Invalid title</p>
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
     </div>
     <br>
     <textarea class="input" rows="6" cols="50" th:field="*{description}"
-              placeholder="enter description here..." minlength="20" maxlength="600" required="required"/>
+              placeholder="enter description here..." minlength="20" maxlength="600" required="required"></textarea>
     <br><br>
     <input type="submit" value="publish"/>
 </form>

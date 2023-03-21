@@ -55,11 +55,11 @@ public class AdvertisementController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute @Valid Advertisement advertisement, Model model, BindingResult result) {
-       result.addError(new FieldError("advertisement", "title","asd324"));
+    public String create(@ModelAttribute @Valid Advertisement advertisement, BindingResult result, Model model) {
+//       result.addError(new FieldError("advertisement", "title","asd324"));
         if (result.hasErrors()) {
             System.out.println("22222");
-            return "redirect:/advertisements/creator";
+            return "advertisements/creator";
         }
         model.addAttribute("advertisement", advertisement);
         advertisementService.create(advertisement);
