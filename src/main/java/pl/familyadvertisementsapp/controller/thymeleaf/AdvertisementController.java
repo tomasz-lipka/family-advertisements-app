@@ -43,12 +43,10 @@ public class AdvertisementController {
     }
 
     @PostMapping()
-    //TODO is @MODEL atrtributr needed?
-    public String create(@Valid Advertisement advertisement, BindingResult result, Model model) {
+    public String create(@Valid Advertisement advertisement, BindingResult result) {
         if (result.hasErrors()) {
             return "advertisements/creator";
         }
-        model.addAttribute("advertisement", advertisement);
         advertisementService.create(advertisement);
         return "redirect:/advertisements/my?created";
     }
@@ -75,9 +73,11 @@ public class AdvertisementController {
     }
 
     @PutMapping()
-    public String update( Advertisement advertisement, Model model) {
+    public String update(@Valid Advertisement advertisement, BindingResult result, Model model) {
         try {
-//            model.addAttribute("advertisement", advertisement);
+            if (result.hasErrors()) {
+                return "advertisements/editor";
+            }
             advertisementService.update(advertisement);
             return "redirect:/advertisements/my?updated";
         } catch (AdvertisementServiceException e) {

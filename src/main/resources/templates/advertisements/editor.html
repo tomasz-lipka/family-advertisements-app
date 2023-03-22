@@ -10,28 +10,25 @@
 <body>
 <ul class="center">
     <li><a th:href="@{/advertisements/all}">home</a></li>
-    •
     <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
-    •
     <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
-    •
     <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
 </ul>
 <hr>
 <h1>edit advertisement</h1>
-<!--<div th:if="${param.error}">-->
-<!--    Something went wrong.-->
-<!--</div>-->
 <br>
 <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="PUT">
     <input type="hidden" th:field="*{id}"/>
     <h3>title</h3>
     <div>
-        <input class="input" type="text" th:field="*{title}" minlength="5" maxlength="20"/>
+        <p th:if="${#fields.hasErrors('title')}" th:errorclass="validation-error" th:errors="*{title}"></p>
+        <input class="input" type="text" th:field="*{title}" minlength="5" maxlength="20" required="required"/>
     </div>
     <br>
     <h3>description</h3>
-    <textarea class="input" rows="10" cols="50" th:field="*{description}" minlength="20" maxlength="600"/>
+    <p th:if="${#fields.hasErrors('description')}" th:errorclass="validation-error" th:errors="*{description}"></p>
+    <textarea class="input" rows="10" cols="50" th:field="*{description}" minlength="20" maxlength="600"
+              required="required"></textarea>
     <br><br>
     <input type="submit" value="update"/>
 </form>

@@ -8,24 +8,22 @@
 </head>
 <body>
 <h1>Create account</h1>
-<div class="error" th:if="${param.exists}">
-    User already exists. Please pick another username.
-</div>
-<!--<div class="error" th:if="${param.blank}">-->
-<!--    User and/or password may not be blank.-->
-<!--</div>-->
-<div class="success" th:if="${param.success}">
-    User created! You can sign in.
+<div class="validation-error" th:if="${param.exists}">
+    Sorry, username already exists. Please pick another username.
 </div>
 <br>
-<form th:action="@{/registration}" th:object="${appuser}" th:method="POST">
+<form th:action="@{/registration}" th:object="${customUserDto}" th:method="POST">
     <div>
-        <input type="text" th:field="*{username}" placeholder="username" minlength="3" maxlength="10" required="required" pattern=".*\S+.*"/>
+        <p th:if="${#fields.hasErrors('username')}" th:errorclass="validation-error" th:errors="*{username}"></p>
+        <input type="text" th:field="*{username}" placeholder="username" minlength="3" maxlength="10"
+               required="required"/>
     </div>
     <br>
     <div>
-        <input type="password" th:field="*{password}" placeholder="password" minlength="3" required="required" pattern=".*\S+.*"/>
+        <p th:if="${#fields.hasErrors('password')}" th:errorclass="validation-error" th:errors="*{password}"></p>
+        <input type="password" th:field="*{password}" placeholder="password" minlength="3" required="required"/>
     </div>
+    <p><small>Password: at least 3 characters, one english letter and one number.</small></p>
     <br>
     <input type="submit" value="sign up"/>
 </form>

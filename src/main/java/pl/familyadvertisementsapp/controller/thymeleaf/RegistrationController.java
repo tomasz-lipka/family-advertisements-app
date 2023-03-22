@@ -1,16 +1,19 @@
 package pl.familyadvertisementsapp.controller.thymeleaf;
 
-import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AppUserServiceException;
-import pl.familyadvertisementsapp.model.AppUser;
-import pl.familyadvertisementsapp.model.AppUserDto;
+import pl.familyadvertisementsapp.model.CustomUser;
+import pl.familyadvertisementsapp.model.CustomUserDto;
 import pl.familyadvertisementsapp.security.SecurityConfiguration;
 import pl.familyadvertisementsapp.service.AppUserService;
+
+import java.nio.CharBuffer;
 
 @Controller
 @RequestMapping("registration")
@@ -22,30 +25,27 @@ public class RegistrationController {
 
     @GetMapping()
     public String getRegistrationView(Model model) {
-        AppUser appUser = new AppUser();
-        model.addAttribute("appuser", appUser);
+        CustomUserDto customUserDto = new CustomUserDto();
+        model.addAttribute("customUserDto", customUserDto);
         return "authentication/registration";
     }
 
     //TODO split method
-    //TODO what is @ModelAtrributet for
     @PostMapping()
-    public String createAppUser(@ModelAttribute AppUserDto appUserDto, Model model) {
-        System.out.println("weqwe");
+    public String createAppUser(@Valid CustomUserDto customUserDto, BindingResult result) {
+        if (result.hasErrors()) {
+            return "authentication/registration";
+        }
         try {
-            model.addAttribute("appuser", appUserDto);
-
             PasswordEncoder passwordEncoder = securityConfiguration.encoder();
-            char[] password = appUserDto.getPassword();
-            String encodedPassword = passwordEncoder.encode(java.nio.CharBuffer.wrap(password));
-
-            appUserService.createAppUser(appUserDto.getUsername(), encodedPassword);
-
-            appUserDto.clearPassword();
-
+            char[] password = customUserDto.getPassword();
+            String encodedPassword = passwordEncoder.encode(CharBuffer.wrap(password));
+            appUserService.createAppUser(customUserDto.getUsername(), encodedPassword);
+            customUserDto.clearPassword();
         } catch (AppUserServiceException e) {
             return "redirect:/registration?exists";
         }
-        return "redirect:/registration?success";
+        //TODO not working properly
+        return "redirect:/authentication?success";
     }
 }

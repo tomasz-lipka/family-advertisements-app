@@ -24,6 +24,9 @@ public class Advertisement implements Comparable<Advertisement> {
     private String title;
 
     @Column(length = 9999)
+    @NotNull
+    @Size(min = 20, max = 600, message = "Must have at least 20 and maximum of 600 characters.")
+    @NotBlank(message = "May not be blank.")
     private String description;
 
     private Date created;

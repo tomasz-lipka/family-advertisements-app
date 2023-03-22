@@ -10,11 +10,8 @@
 <body>
 <ul class="center">
     <li><a class="active" th:href="@{/advertisements/all}">home</a></li>
-    •
     <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
-    •
     <li><a th:href="@{/advertisements/my}">my advertisements</a></li>
-    •
     <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
 </ul>
 <hr>

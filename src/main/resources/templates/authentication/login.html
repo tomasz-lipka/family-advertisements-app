@@ -9,9 +9,11 @@
 <body>
 <h1>Family Advertisements</h1>
 <p>Simple app to share advertisements with your family and friends</p>
-
 <div class="error" th:if="${param.error}">
     Invalid username and/or password.
+</div>
+<div class="success" th:if="${param.success}">
+    User created! You can sign in.
 </div>
 <br><br>
 <form th:action="@{/authentication}" method="POST">

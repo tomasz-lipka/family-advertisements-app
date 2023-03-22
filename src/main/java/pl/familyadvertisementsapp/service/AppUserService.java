@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.AppUserServiceException;
-import pl.familyadvertisementsapp.model.AppUser;
+import pl.familyadvertisementsapp.model.CustomUser;
 import pl.familyadvertisementsapp.repository.AppUserRepository;
 
 @Service
@@ -20,10 +20,10 @@ public class AppUserService implements UserDetailsService {
     //TODO split method
     public void createAppUser(String username, String password) throws AppUserServiceException {
         if (!userExists(username)) {
-            AppUser appUser = new AppUser();
-            appUser.setUsername(username);
-            appUser.setPassword(password);
-            appUserRepository.save(appUser);
+            CustomUser customUser = new CustomUser();
+            customUser.setUsername(username);
+            customUser.setPassword(password);
+            appUserRepository.save(customUser);
         } else {
             throw new AppUserServiceException("AppUser with that username already exists.");
         }
@@ -32,13 +32,13 @@ public class AppUserService implements UserDetailsService {
     //TODO split method
     @Override
     public UserDetails loadUserByUsername(String username) {
-        AppUser appUser = appUserRepository.findByUsername(username);
-        if (appUser == null) {
+        CustomUser customUser = appUserRepository.findByUsername(username);
+        if (customUser == null) {
             throw new UsernameNotFoundException("User with that name not found.");
         }
         return User.builder()
-                .username(appUser.getUsername())
-                .password(appUser.getPassword())
+                .username(customUser.getUsername())
+                .password(customUser.getPassword())
                 .roles(DEFAULT_ROLE)
                 .build();
     }
