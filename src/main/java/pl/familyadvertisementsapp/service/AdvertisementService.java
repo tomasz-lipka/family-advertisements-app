@@ -12,9 +12,9 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class AdvertisementService {
+    //TODO clean code methods
 
     private AdvertisementRepository advertisementRepository;
-
     private UserSessionHelper userSessionHelper;
 
     public List<Advertisement> getAll() {
@@ -23,18 +23,21 @@ public class AdvertisementService {
         return advertisements;
     }
 
-
     public Advertisement getById(Long id) throws AdvertisementServiceException {
         throwExceptionIfNotFound(id);
         return advertisementRepository.findById(id).get();
     }
 
     public Advertisement create(Advertisement advertisement) {
-        String owner = userSessionHelper.getCurrentPrincipalName();
+        setOwner(advertisement);
         advertisement.setCreated(new Date());
-        advertisement.setAppUserUsername(owner);
         advertisementRepository.save(advertisement);
         return advertisement;
+    }
+
+    private void setOwner(Advertisement advertisement) {
+        String owner = userSessionHelper.getCurrentPrincipalName();
+        advertisement.setOwnerUsername(owner);
     }
 
     public void deleteById(Long id) throws AdvertisementServiceException {
@@ -44,7 +47,7 @@ public class AdvertisementService {
 
     public List<Advertisement> getOwned() {
         String owner = userSessionHelper.getCurrentPrincipalName();
-        List<Advertisement> advertisements = advertisementRepository.findByAppUserUsername(owner);
+        List<Advertisement> advertisements = advertisementRepository.findByOwnerUsername(owner);
         Collections.sort(advertisements);
         return advertisements;
     }

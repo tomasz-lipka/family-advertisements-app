@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AppUserServiceException;
-import pl.familyadvertisementsapp.model.CustomUser;
 import pl.familyadvertisementsapp.model.CustomUserDto;
 import pl.familyadvertisementsapp.security.SecurityConfiguration;
 import pl.familyadvertisementsapp.service.AppUserService;
@@ -30,22 +29,29 @@ public class RegistrationController {
         return "authentication/registration";
     }
 
-    //TODO split method
     @PostMapping()
     public String createAppUser(@Valid CustomUserDto customUserDto, BindingResult result) {
         if (result.hasErrors()) {
             return "authentication/registration";
         }
         try {
-            PasswordEncoder passwordEncoder = securityConfiguration.encoder();
-            char[] password = customUserDto.getPassword();
-            String encodedPassword = passwordEncoder.encode(CharBuffer.wrap(password));
-            appUserService.createAppUser(customUserDto.getUsername(), encodedPassword);
+            createUserWithEncodedPassword(customUserDto);
             customUserDto.clearPassword();
         } catch (AppUserServiceException e) {
             return "redirect:/registration?exists";
         }
-        //TODO not working properly
         return "redirect:/authentication?success";
+    }
+
+    private void createUserWithEncodedPassword(CustomUserDto customUserDto) throws AppUserServiceException {
+        char[] charPassword = customUserDto.getPassword();
+        String encodedPassword = getEncodedPassword(charPassword);
+        String username = customUserDto.getUsername();
+        appUserService.createAppUser(username, encodedPassword);
+    }
+
+    private String getEncodedPassword(char[] charPassword) {
+        PasswordEncoder passwordEncoder = securityConfiguration.encoder();
+        return passwordEncoder.encode(CharBuffer.wrap(charPassword));
     }
 }

@@ -31,7 +31,7 @@ public class Advertisement implements Comparable<Advertisement> {
 
     private Date created;
 
-    private String appUserUsername;
+    private String ownerUsername;
 
     @Override
     public int compareTo(Advertisement advertisement) {

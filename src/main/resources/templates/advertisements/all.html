@@ -26,7 +26,7 @@
                 <td th:text="${advertisement.title}"/>
             </h2>
             <p class="adv-owner">
-            <td th:text="${advertisement.appUserUsername}"/>
+            <td th:text="${advertisement.ownerUsername}"/>
             </p>
             <p class="adv-date">
             <td th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"/>
