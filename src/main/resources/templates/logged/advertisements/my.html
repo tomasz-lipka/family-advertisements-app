@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/logged/advertisements/my.css}" rel="stylesheet">
+<!--    <link th:href="@{/styles/logged/advertisements/my.css}" rel="stylesheet">-->
+    <link th:href="@{/styles/logged/advertisements.css}" rel="stylesheet">
     <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
 </head>
 <body>
@@ -30,8 +31,8 @@
 </h3>
 <br>
 <tr th:each="advertisement: ${advertisements}">
-    <div id="main-container-div">
-        <div id="left-div">
+    <div class="edit-container-div">
+        <div class="left-div">
             <h2 class="adv-title">
                 <td th:text="${advertisement.title}"></td>
             </h2>
@@ -42,12 +43,12 @@
             <td th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></td>
             </p>
         </div>
-        <div id="right-div">
+        <div class="right-div">
             <p>
             <td th:text="${advertisement.description}"></td>
             </p>
         </div>
-        <div id="bottom-div">
+        <div class="bottom-div">
             <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}">
                 <input type="submit" value="edit"/>
             </form>
