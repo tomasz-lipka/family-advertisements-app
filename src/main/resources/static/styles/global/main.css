@@ -16,14 +16,6 @@ input[type=button], input[type=submit], .button {
   font-size: 1em;
 }
 
-a {
-  color: white;
-}
-
-a:hover {
-  color: gray;
-}
-
 .error {
   color: #FF5733;
   border-width: 1px;
@@ -42,4 +34,18 @@ a:hover {
 
 .validation-error {
   color: #FF5733;
+}
+
+.input {
+  width: 500px;
+}
+
+.text-align-center, .text-align-center input {
+  text-align: center;
+}
+
+.hyperlink {
+  text-decoration: underline;
+  font-size: 1.2em;
+  color: white;
 }

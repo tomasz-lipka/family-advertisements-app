@@ -4,11 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/specific/my.css}" rel="stylesheet">
-    <link th:href="@{/styles/global/navigation.css}" rel="stylesheet">
+    <link th:href="@{/styles/logged/advertisements/my.css}" rel="stylesheet">
+    <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
 </head>
 <body>
-<ul class="center">
+<ul class="text-align-center menu-bar">
     <li><a th:href="@{/advertisements/all}">home</a></li>
     <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
     <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
@@ -30,28 +30,28 @@
 </h3>
 <br>
 <tr th:each="advertisement: ${advertisements}">
-    <div id="container-div">
+    <div id="main-container-div">
         <div id="left-div">
             <h2 class="adv-title">
-                <td th:text="${advertisement.title}"/>
+                <td th:text="${advertisement.title}"></td>
             </h2>
             <p class="adv-owner">
-            <td th:text="${advertisement.ownerUsername}"/>
+            <td th:text="${advertisement.ownerUsername}"></td>
             </p>
             <p class="adv-date">
-            <td th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"/>
+            <td th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></td>
             </p>
         </div>
         <div id="right-div">
             <p>
-            <td th:text="${advertisement.description}"/>
+            <td th:text="${advertisement.description}"></td>
             </p>
         </div>
         <div id="bottom-div">
-            <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" class="float-right">
+            <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}">
                 <input type="submit" value="edit"/>
             </form>
-            <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE" class="float-right">
+            <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE">
                 <input type="submit" value="delete"/>
             </form>
         </div>

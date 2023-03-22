@@ -14,8 +14,8 @@
   margin-left: 20px;
 }
 
-#container-div {
-  height: 200px;
+#main-container-div {
+  height: 150px;
   background-color: #172026;
 }
 
@@ -29,13 +29,4 @@
   float: right;
   width:70%;
   height: 150px;
-}
-
-#bottom-div {
-  height: 50px;
-}
-
-.float-right {
-  float: right;
-  margin-right: 20px;
 }

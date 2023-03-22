@@ -4,9 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/global/center.css}" rel="stylesheet">
 </head>
-<body>
+<body class="text-align-center">
 <h1>Create account</h1>
 <div class="validation-error" th:if="${param.exists}">
     Sorry, username already exists. Please pick another username.
@@ -28,6 +27,6 @@
     <input type="submit" value="sign up"/>
 </form>
 <br><br>
-<a th:href="@{/authentication}">sing in</a>
+<a class="hyperlink" th:href="@{/authentication}">sing in</a>
 </body>
 </html>

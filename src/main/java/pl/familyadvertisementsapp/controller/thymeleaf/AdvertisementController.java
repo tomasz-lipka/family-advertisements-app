@@ -25,27 +25,27 @@ public class AdvertisementController {
     public String getAllView(Model model) {
         List<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
-        return "advertisements/all";
+        return "logged/advertisements/all";
     }
 
     @GetMapping("/my")
     public String getMyView(Model model) {
         Collection<Advertisement> advertisements = advertisementService.getOwned();
         model.addAttribute("advertisements", advertisements);
-        return "advertisements/my";
+        return "logged/advertisements/my";
     }
 
     @GetMapping("/creator")
     public String getCreatorView(Model model) {
         Advertisement advertisement = new Advertisement();
         model.addAttribute("advertisement", advertisement);
-        return "advertisements/creator";
+        return "logged/advertisements/creator";
     }
 
     @PostMapping()
     public String create(@Valid Advertisement advertisement, BindingResult result) {
         if (result.hasErrors()) {
-            return "advertisements/creator";
+            return "logged/advertisements/creator";
         }
         advertisementService.create(advertisement);
         return "redirect:/advertisements/my?created";
@@ -66,7 +66,7 @@ public class AdvertisementController {
         try {
             Advertisement advertisement = advertisementService.getById(id);
             model.addAttribute("advertisement", advertisement);
-            return "advertisements/editor";
+            return "logged/advertisements/editor";
         } catch (AdvertisementServiceException e) {
             return customErrorController.getErrorView(model, e.getMessage());
         }
@@ -76,7 +76,7 @@ public class AdvertisementController {
     public String update(@Valid Advertisement advertisement, BindingResult result, Model model) {
         try {
             if (result.hasErrors()) {
-                return "advertisements/editor";
+                return "logged/advertisements/editor";
             }
             advertisementService.update(advertisement);
             return "redirect:/advertisements/my?updated";

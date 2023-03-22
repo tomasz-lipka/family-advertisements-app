@@ -4,9 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/global/center.css}" rel="stylesheet">
 </head>
-<body>
+<body class="text-align-center">
 <h1>Family Advertisements</h1>
 <p>Simple app to share advertisements with your family and friends</p>
 <div class="error" th:if="${param.error}">
@@ -28,6 +27,6 @@
     <input type="submit" value="sign in"/>
 </form>
 <br><br>
-<a th:href="@{/registration}">sing up</a>
+<a class="hyperlink" th:href="@{/registration}">sing up</a>
 </body>
 </html>

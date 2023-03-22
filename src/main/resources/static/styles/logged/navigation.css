@@ -1,12 +1,4 @@
-hr {
-  color: #FF5733;
-}
-
-.center {
-  text-align:center
-}
-
-li {
+.menu-bar li {
   display: inline;
 }
 
@@ -14,8 +6,18 @@ a {
   padding: 20px;
   text-decoration: none;
   font-size: 20px;
+  color: white;
+}
+
+a:hover {
+  color: gray;
 }
 
 .active {
   text-decoration: underline;
 }
+
+hr {
+  color: #FF5733;
+}
+

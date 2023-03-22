@@ -26,13 +26,13 @@ public class RegistrationController {
     public String getRegistrationView(Model model) {
         CustomUserDto customUserDto = new CustomUserDto();
         model.addAttribute("customUserDto", customUserDto);
-        return "authentication/registration";
+        return "unlogged/registration";
     }
 
     @PostMapping()
     public String createAppUser(@Valid CustomUserDto customUserDto, BindingResult result) {
         if (result.hasErrors()) {
-            return "authentication/registration";
+            return "unlogged/registration";
         }
         try {
             createUserWithEncodedPassword(customUserDto);
