@@ -13,13 +13,14 @@ import java.util.Arrays;
 @Setter
 public class CustomUserDto {
 
+    //TODO temporarily disable password and username validation -> then enable; also in HTML!!!
     @NotNull
-    @Size(min = 3, max = 10, message = "Must have at least 3 and maximum of 10 characters.")
-    @NotBlank(message = "May not be blank.")
+//    @Size(min = 3, max = 10, message = "Username must have at least 3 and a maximum of 10 characters.")
+    @NotBlank(message = "Username ay not be blank.")
     private String username;
 
     @NotNull
-    @ValidPassword
+//    @ValidPassword
     private char[] password;
 
     public void clearPassword() {

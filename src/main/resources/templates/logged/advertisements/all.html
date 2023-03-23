@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Family Advertisements</title>
     <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-<!--    <link th:href="@{/styles/logged/advertisements/all.css}" rel="stylesheet">-->
     <link th:href="@{/styles/logged/advertisements.css}" rel="stylesheet">
     <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
 </head>
@@ -21,15 +20,15 @@
     There are no advertisements.
 </h3>
 <tr th:each="advertisement: ${advertisements}">
-    <div class="container-div">
+    <div class="container-div-height container-div-color">
         <div class="left-div">
-            <h2 class="adv-title">
+            <h2 class="adv-title title-margin">
                 <td th:text="${advertisement.title}"></td>
             </h2>
-            <p class="adv-owner">
+            <p class="title-margin">
             <td th:text="${advertisement.ownerUsername}"></td>
             </p>
-            <p class="adv-date">
+            <p class="adv-date title-margin">
             <td th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></td>
             </p>
         </div>

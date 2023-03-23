@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AppUserServiceException;
 import pl.familyadvertisementsapp.model.CustomUserDto;
-import pl.familyadvertisementsapp.security.SecurityConfiguration;
+import pl.familyadvertisementsapp.configuration.SecurityConfiguration;
 import pl.familyadvertisementsapp.service.AppUserService;
 
 import java.nio.CharBuffer;
@@ -40,7 +40,7 @@ public class RegistrationController {
         } catch (AppUserServiceException e) {
             return "redirect:/registration?exists";
         }
-        return "redirect:/authentication?success";
+        return "redirect:/authentication?created";
     }
 
     private void createUserWithEncodedPassword(CustomUserDto customUserDto) throws AppUserServiceException {

@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Family Advertisements</title>
-    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-</head>
-<body class="text-align-center">
-<h1>Family Advertisements</h1>
-<p>Simple app to share advertisements with your family and friends</p>
-<div class="error" th:if="${param.error}">
-    Invalid username and/or password.
-</div>
-<div class="success" th:if="${param.success}">
-    User created! You can sign in.
-</div>
-<br><br>
-<form th:action="@{/authentication}" method="POST">
-    <div>
-        <input type="text" name="username" placeholder="username"/>
-    </div>
-    <br>
-    <div>
-        <input type="password" name="password" placeholder="password"/>
-    </div>
-    <br>
-    <input type="submit" value="sign in"/>
-</form>
-<br><br>
-<a class="hyperlink" th:href="@{/registration}">sing up</a>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>Family Advertisements</title>
+      <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+   </head>
+   <body class="text-align-center">
+      <h1>Family Advertisements</h1>
+      <p>Simple app to share advertisements with your family and friends</p>
+      <form th:action="@{/authentication}" method="POST">
+         <p class="message-core message-error" th:if="${param.error}">Invalid username and/or password.</p>
+         <p class="message-core message-success" th:if="${param.created}">User created! You can sign in.</p>
+         <input type="text" name="username" placeholder="username"/>
+         <input type="password" name="password" placeholder="password"/>
+         <br><br>
+         <input type="submit" value="sign in"/>
+      </form>
+      <br>
+      <a class="hyperlink" th:href="@{/registration}">sing up</a>
+   </body>
 </html>

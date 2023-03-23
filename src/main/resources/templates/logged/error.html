@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Family Advertisements</title>
-    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-    <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
-</head>
-<body class="text-align-center">
-<ul class="text-align-center menu-bar">
-    <li><a class="active" th:href="@{/advertisements/all}">home</a></li>
-    •
-    <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
-    •
-    <li><a th:href="@{/advertisements/my}">my advertisements</a></li>
-    •
-    <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
-</ul>
-<hr>
-<br>
-<h3 class="error" th:if="${errorMessage}" th:text="${errorMessage}"></h3>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>Family Advertisements</title>
+      <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+      <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
+   </head>
+   <body class="text-align-center">
+      <ul class="text-align-center menu-bar">
+         <li><a class="active" th:href="@{/advertisements/all}">home</a></li>
+         <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
+         <li><a th:href="@{/advertisements/my}">my advertisements</a></li>
+         <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
+      </ul>
+      <hr>
+      <br>
+      <p class="message-core message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+   </body>
 </html>

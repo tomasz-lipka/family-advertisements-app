@@ -1,32 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Family Advertisements</title>
-    <link th:href="@{/styles/global/main.css}" rel="stylesheet">
-</head>
-<body class="text-align-center">
-<h1>Create account</h1>
-<div class="validation-error" th:if="${param.exists}">
-    Sorry, username already exists. Please pick another username.
-</div>
-<br>
-<form th:action="@{/registration}" th:object="${customUserDto}" th:method="POST">
-    <div>
-        <p th:if="${#fields.hasErrors('username')}" th:errorclass="validation-error" th:errors="*{username}"></p>
-        <input type="text" th:field="*{username}" placeholder="username" minlength="3" maxlength="10"
-               required="required"/>
-    </div>
-    <br>
-    <div>
-        <p th:if="${#fields.hasErrors('password')}" th:errorclass="validation-error" th:errors="*{password}"></p>
-        <input type="password" th:field="*{password}" placeholder="password" minlength="3" required="required"/>
-    </div>
-    <p><small>Password: at least 3 characters, one english letter and one number.</small></p>
-    <br>
-    <input type="submit" value="sign up"/>
-</form>
-<br><br>
-<a class="hyperlink" th:href="@{/authentication}">sing in</a>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>Family Advertisements</title>
+      <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+   </head>
+   <body class="text-align-center">
+      <h1>Create account</h1>
+      <form th:action="@{/registration}" th:object="${customUserDto}" th:method="POST">
+         <p class="message-core message-error" th:if="${param.exists}">Sorry, username already exists. Please pick another username.</p>
+         <p class="message-core message-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+         <p class="message-core message-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+         <input type="text" th:field="*{username}" placeholder="username"
+            required="required"/>
+         <input type="password" th:field="*{password}" placeholder="password"
+            required="required"/>
+         <br>
+         <p><small>Password must have at least 3 characters, one english letter and one number.</small></p>
+         <br>
+         <input type="submit" value="sign up"/>
+      </form>
+      <br>
+      <a class="hyperlink" th:href="@{/authentication}">sing in</a>
+   </body>
 </html>

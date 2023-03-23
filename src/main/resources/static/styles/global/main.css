@@ -16,28 +16,32 @@ input[type=button], input[type=submit], .button {
   font-size: 1em;
 }
 
-.error {
-  color: #FF5733;
+.message-core {
   border-width: 1px;
   border-style: dashed;
+  padding: 1em;
+}
+
+.message-error {
+  color: #FF5733;
   border-color: #FF5733;
-  padding: 1em;
 }
 
-.success {
+.message-success {
   color: #AFE1AF;
-  border-width: 1px;
-  border-style: dashed;
   border-color: #AFE1AF;
-  padding: 1em;
 }
 
-.validation-error {
-  color: #FF5733;
+.message-center {
+  margin: auto;
 }
 
-.input {
-  width: 500px;
+.message-narrow {
+  width: 50%;
+}
+
+.input-width {
+  width: 50%;
 }
 
 .text-align-center, .text-align-center input {
