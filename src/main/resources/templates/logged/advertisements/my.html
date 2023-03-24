@@ -15,8 +15,8 @@
     <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
 </ul>
 <hr>
-<h1>my advertisements</h1>
-<p th:if="${#lists.isEmpty(advertisements)}">You have no advertisements.</p>
+<br>
+<p th:if="${#lists.isEmpty(advertisements)}">There are no advertisements.</p>
 <p class="message-core message-success" th:if="${param.created}">New advertisement created!</p>
 <p class="message-core message-success" th:if="${param.deleted}">Advertisement deleted!</p>
 <p class="message-core message-success" th:if="${param.updated}">Advertisement updated!</p>
