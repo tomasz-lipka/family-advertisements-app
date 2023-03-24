@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.thymeleaf;
+package pl.familyadvertisementsapp.view.thymeleaf;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
+import pl.familyadvertisementsapp.view.SelectedPage;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,14 +26,16 @@ public class AdvertisementController {
     public String getAllView(Model model) {
         List<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
-        return "logged/advertisements/all";
+        model.addAttribute("selectedPage", "ALL");
+        return "logged/advertisements/advertisements";
     }
 
     @GetMapping("/my")
     public String getMyView(Model model) {
         Collection<Advertisement> advertisements = advertisementService.getOwned();
         model.addAttribute("advertisements", advertisements);
-        return "logged/advertisements/my";
+        model.addAttribute("selectedPage", "MY");
+        return "logged/advertisements/advertisements";
     }
 
     @GetMapping("/creator")

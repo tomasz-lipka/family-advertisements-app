@@ -1,12 +1,6 @@
-package pl.familyadvertisementsapp.controller.rest;
+package pl.familyadvertisementsapp.view.rest;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.familyadvertisementsapp.model.Advertisement;
-import pl.familyadvertisementsapp.service.AdvertisementService;
-
-import java.util.Collection;
 
 @RestController
 @RequestMapping("rest")
