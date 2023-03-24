@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
-import pl.familyadvertisementsapp.view.SelectedPage;
+import pl.familyadvertisementsapp.view.MenuPage;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,32 +26,36 @@ public class AdvertisementController {
     public String getAllView(Model model) {
         List<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
-        model.addAttribute("selectedPage", SelectedPage.ALL.toString());
-        return "logged/advertisements/advertisements";
+        model.addAttribute("selectedMenuPage", MenuPage.ALL.toString());
+        return "logged/advertisements";
     }
 
     @GetMapping("/my")
     public String getMyView(Model model) {
         Collection<Advertisement> advertisements = advertisementService.getOwned();
         model.addAttribute("advertisements", advertisements);
-        model.addAttribute("selectedPage", SelectedPage.MY.toString());
-        return "logged/advertisements/advertisements";
+        model.addAttribute("selectedMenuPage", MenuPage.MY.toString());
+        return "logged/advertisements";
     }
 
     @GetMapping("/creator")
     public String getCreatorView(Model model) {
         Advertisement advertisement = new Advertisement();
         model.addAttribute("advertisement", advertisement);
-        return "logged/advertisements/creator";
+        model.addAttribute("restMethod", "POST");
+        model.addAttribute("selectedMenuPage", MenuPage.CREATOR.toString());
+        return "logged/creator-editor";
     }
 
     @PostMapping()
-    public String create(@Valid Advertisement advertisement, BindingResult result) {
+    public String create(@Valid Advertisement advertisement, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "logged/advertisements/creator";
+            model.addAttribute("restMethod", "POST");
+            model.addAttribute("selectedMenuPage", MenuPage.CREATOR.toString());
+            return "logged/creator-editor";
         }
         advertisementService.create(advertisement);
-        return "redirect:/advertisements/my?created";
+        return "redirect:/advertisements/all?created";
     }
 
     @DeleteMapping("/{id}")
@@ -69,7 +73,8 @@ public class AdvertisementController {
         try {
             Advertisement advertisement = advertisementService.getById(id);
             model.addAttribute("advertisement", advertisement);
-            return "logged/advertisements/editor";
+            model.addAttribute("restMethod", "PUT");
+            return "logged/creator-editor";
         } catch (AdvertisementServiceException e) {
             return customErrorController.getErrorView(model, e.getMessage());
         }
@@ -79,7 +84,8 @@ public class AdvertisementController {
     public String update(@Valid Advertisement advertisement, BindingResult result, Model model) {
         try {
             if (result.hasErrors()) {
-                return "logged/advertisements/editor";
+                model.addAttribute("restMethod", "PUT");
+                return "logged/creator-editor";
             }
             advertisementService.update(advertisement);
             return "redirect:/advertisements/my?updated";

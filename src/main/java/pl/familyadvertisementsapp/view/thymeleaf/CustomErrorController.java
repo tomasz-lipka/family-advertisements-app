@@ -14,15 +14,15 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     //TODO split method
     public String handleError(HttpServletRequest request, Model model) {
-        model.addAttribute("errorMessage", "Sorry, something went wrong.");
+        model.addAttribute("errorMessage", "Sorry, something went wrong");
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if (status != null) {
             int statusCode = Integer.parseInt(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                model.addAttribute("errorMessage", "Sorry, the page you're looking for doesn't exist.");
+                model.addAttribute("errorMessage", "The page you're looking for doesn't exist");
             }
             if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
-                model.addAttribute("errorMessage", "Sorry, this request is not supported.");
+                model.addAttribute("errorMessage", "This request is not supported");
             }
         }
         return "logged/blank";

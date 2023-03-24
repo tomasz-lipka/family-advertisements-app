@@ -19,14 +19,14 @@ public class Advertisement implements Comparable<Advertisement> {
     private long id;
 
     @NotNull
-    @Size(min = 5, max = 20, message = "Must have at least 5 and maximum of 20 characters.")
-    @NotBlank(message = "May not be blank.")
+    @Size(min = 5, max = 20, message = "Must have at least 5 and maximum of 20 characters")
+    @NotBlank(message = "Title may not be blank.")
     private String title;
 
     @Column(length = 9999)
     @NotNull
-    @Size(min = 20, max = 600, message = "Must have at least 20 and a maximum of 600 characters.")
-    @NotBlank(message = "May not be blank.")
+    @Size(min = 20, max = 550, message = "Must have at least 20 and a maximum of 550 characters")
+    @NotBlank(message = "Description may not be blank")
     private String description;
 
     private Date created;

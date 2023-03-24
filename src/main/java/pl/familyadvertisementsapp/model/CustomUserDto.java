@@ -16,7 +16,7 @@ public class CustomUserDto {
     //TODO temporarily disable password and username validation -> then enable; also in HTML!!!
     @NotNull
 //    @Size(min = 3, max = 10, message = "Username must have at least 3 and a maximum of 10 characters.")
-    @NotBlank(message = "Username ay not be blank.")
+    @NotBlank(message = "Username may not be blank")
     private String username;
 
     @NotNull

@@ -11,10 +11,10 @@
       <div th:insert="logged/blank :: menu"></div>
       <hr>
       <br>
-      <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements.</p>
-      <p class="message-core message-success" th:if="${param.created}">New advertisement created!</p>
-      <p class="message-core message-success" th:if="${param.deleted}">Advertisement deleted!</p>
-      <p class="message-core message-success" th:if="${param.updated}">Advertisement updated!</p>
+      <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements</p>
+      <p class="message-core message-success" th:if="${param.created}">New advertisement created</p>
+      <p class="message-core message-success" th:if="${param.deleted}">Advertisement deleted</p>
+      <p class="message-core message-success" th:if="${param.updated}">Advertisement updated</p>
       <table>
          <tr th:each="advertisement: ${advertisements}">
             <td class="divs">
@@ -23,7 +23,7 @@
                   <p th:text="${advertisement.ownerUsername}"></p>
                   <p class="adv-date" th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></p>
                </div>
-               <div th:if="${selectedPage == 'MY'}" class="right-div">
+               <div th:if="${selectedMenuPage == 'MY'}" class="right-div">
                   <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" th:method="GET">
                      <input type="submit" value="edit"/>
                   </form>
@@ -35,6 +35,7 @@
                <div class="central-div">
                   <div class="text-overflow" th:text="${advertisement.description}"></div>
                </div>
+               <br>
             </td>
          </tr>
       </table>

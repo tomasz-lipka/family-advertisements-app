@@ -9,8 +9,8 @@
       <h1>Family Advertisements</h1>
       <p>Simple app to share advertisements with your family and friends</p>
       <form th:action="@{/authentication}" method="POST">
-         <p class="message-core message-error" th:if="${param.error}">Invalid username and/or password.</p>
-         <p class="message-core message-success" th:if="${param.created}">User created! You can sign in.</p>
+         <p class="message-core message-error" th:if="${param.error}">Invalid username and/or password</p>
+         <p class="message-core message-success" th:if="${param.created}">User created. You can sign in</p>
          <input type="text" name="username" placeholder="username"/>
          <input type="password" name="password" placeholder="password"/>
          <br><br>

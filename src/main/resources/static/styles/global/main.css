@@ -33,16 +33,12 @@ input[type=submit] {
   border-color: #AFE1AF;
 }
 
-.message-center {
-  margin: auto;
-}
-
-.message-narrow {
-  width: 50%;
-}
-
 .input-width {
-  width: 50%;
+  width: 70%;
+}
+
+.input-width-short {
+  width: 20%;
 }
 
 .text-align-center, .text-align-center input {

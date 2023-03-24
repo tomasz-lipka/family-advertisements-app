@@ -8,6 +8,6 @@ public class RedirectionController {
 
     @GetMapping("/")
     public String redirect() {
-        return "redirect:/logged/advertisements/all";
+        return "redirect:/advertisements/all";
     }
 }

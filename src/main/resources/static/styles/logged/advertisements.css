@@ -9,7 +9,7 @@
 }
 
 .divs div  {
-  /*background-color: #172026;*/
+  background-color: #172026;
   height: 8em;
 }
 
@@ -18,7 +18,6 @@
    width: 30%;
    box-sizing: border-box;
    padding-left: 1em;
-        background-color: red;
 }
 
 .central-div {
@@ -27,7 +26,6 @@
    box-sizing: border-box;
    padding-top: 1em;
    padding-right: 1em;
-        background-color: green;
 }
 
 .right-div {
@@ -36,7 +34,6 @@
   text-align: center;
   box-sizing: border-box;
   padding-top: 1em;
-         background-color: yellow;
 }
 
 .text-overflow {

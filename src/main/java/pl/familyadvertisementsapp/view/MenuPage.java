@@ -1,7 +1,8 @@
 package pl.familyadvertisementsapp.view;
 
-public enum SelectedPage {
+public enum MenuPage {
 
     MY,
-    ALL
+    ALL,
+    CREATOR
 }
