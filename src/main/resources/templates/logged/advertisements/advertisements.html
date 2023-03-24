@@ -8,15 +8,10 @@
       <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
    </head>
    <body>
-      <ul class="text-align-center menu-bar">
-         <li><a th:href="@{/advertisements/all}">home</a></li>
-         <li><a th:href="@{/advertisements/creator}">create advertisement</a></li>
-         <li><a class="active" th:href="@{/advertisements/my}">my advertisements</a></li>
-         <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
-      </ul>
+      <div th:insert="logged/blank :: menu"></div>
       <hr>
       <br>
-      <p th:if="${#lists.isEmpty(advertisements)}">There are no advertisements.</p>
+      <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements.</p>
       <p class="message-core message-success" th:if="${param.created}">New advertisement created!</p>
       <p class="message-core message-success" th:if="${param.deleted}">Advertisement deleted!</p>
       <p class="message-core message-success" th:if="${param.updated}">Advertisement updated!</p>

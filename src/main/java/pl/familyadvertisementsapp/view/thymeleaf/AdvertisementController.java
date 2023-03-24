@@ -26,7 +26,7 @@ public class AdvertisementController {
     public String getAllView(Model model) {
         List<Advertisement> advertisements = advertisementService.getAll();
         model.addAttribute("advertisements", advertisements);
-        model.addAttribute("selectedPage", "ALL");
+        model.addAttribute("selectedPage", SelectedPage.ALL.toString());
         return "logged/advertisements/advertisements";
     }
 
@@ -34,7 +34,7 @@ public class AdvertisementController {
     public String getMyView(Model model) {
         Collection<Advertisement> advertisements = advertisementService.getOwned();
         model.addAttribute("advertisements", advertisements);
-        model.addAttribute("selectedPage", "MY");
+        model.addAttribute("selectedPage", SelectedPage.MY.toString());
         return "logged/advertisements/advertisements";
     }
 

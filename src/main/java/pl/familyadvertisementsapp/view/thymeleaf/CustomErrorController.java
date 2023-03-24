@@ -25,11 +25,11 @@ public class CustomErrorController implements ErrorController {
                 model.addAttribute("errorMessage", "Sorry, this request is not supported.");
             }
         }
-        return "logged/error";
+        return "logged/blank";
     }
 
      String getErrorView(Model model, String exceptionMessage) {
         model.addAttribute("errorMessage", exceptionMessage);
-        return "logged/error";
+        return "logged/blank";
     }
 }
