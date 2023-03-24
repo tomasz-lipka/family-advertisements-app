@@ -1,10 +1,6 @@
-.title-margin {
-  margin-left: 20px;
-}
-
 .adv-title {
   color: #FF5733;
-  line-height: 0.7;
+    line-height: 0.7em;
 }
 
 .adv-date {
@@ -12,32 +8,37 @@
   color: gray;
 }
 
-.container-div-color {
-  background-color: #172026;
-}
-
-.container-div-height {
-  height: 150px;
-}
-
-.edit-container-div-height {
-  height: 200px;
+.divs div  {
+  /*background-color: #172026;*/
+  height: 8em;
 }
 
 .left-div {
-  float: left;
-  width: 30%;
-  height: 150px;
+   float: left;
+   width: 30%;
+   box-sizing: border-box;
+   padding-left: 1em;
+        background-color: red;
+}
+
+.central-div {
+   margin-left: auto;
+   margin-right: auto;
+   box-sizing: border-box;
+   padding-top: 1em;
+        background-color: green;
 }
 
 .right-div {
   float: right;
-  width: 70%;
-  height: 150px;
+  width: 7em;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 1em;
+         background-color: yellow;
 }
 
-.bottom-div, .bottom-div form {
-  float: right;
-  height: 50px;
-  margin-right: 10px;
+.text-overflow {
+   height: 6em !important;
+   overflow: auto;
 }
