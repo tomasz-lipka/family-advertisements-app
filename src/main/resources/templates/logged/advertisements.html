@@ -17,26 +17,28 @@
       <p class="message-core message-success text-align-center" th:if="${param.updated}">Advertisement updated</p>
       <table>
          <tr th:each="advertisement: ${advertisements}">
-            <td class="divs">
-               <div class="left-div">
-                  <h2 class="adv-title" th:text="${advertisement.title}"></h2>
-                  <p th:text="${advertisement.ownerUsername}"></p>
-                  <p class="adv-date" th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></p>
+            <div class="flex-container">
+               <div class="outer-left-flex">
+                  <div class="inner-left-flex">
+                     <h2 class="adv-title" th:text="${advertisement.title}"></h2>
+                     <p th:text="${advertisement.ownerUsername}"></p>
+                     <p class="adv-date" th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></p>
+                  </div>
+                  <div class="inner-right-flex">
+                     <div class="text-overflow" th:text="${advertisement.description}"></div>
+                  </div>
                </div>
-               <div th:if="${selectedMenuPage == 'MY'}" class="right-div">
+               <div class="outer-right-flex" th:if="${selectedMenuPage == 'MY'}">
                   <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" th:method="GET">
                      <input type="submit" value="edit"/>
                   </form>
-                  <br>
+                  <br><br>
                   <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE">
                      <input type="submit" value="delete"/>
                   </form>
                </div>
-               <div class="central-div">
-                  <div class="text-overflow" th:text="${advertisement.description}"></div>
-               </div>
-               <br>
-            </td>
+            </div>
+            <br>
          </tr>
       </table>
    </body>

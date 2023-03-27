@@ -8,32 +8,30 @@
   color: gray;
 }
 
-.divs div  {
-  background-color: #172026;
+.flex-container {
+  display: flex;
   height: 8em;
+  background-color: #172026;
 }
 
-.left-div {
-   float: left;
-   width: 30%;
-   box-sizing: border-box;
+.outer-left-flex {
+  display: flex;
+  flex-grow: 1;
+}
+
+.outer-right-flex {
+  padding: 1em;
+}
+
+.inner-left-flex {
+   flex: 3;
    padding-left: 1em;
 }
 
-.central-div {
-   margin-left: auto;
-   margin-right: auto;
-   box-sizing: border-box;
+.inner-right-flex {
+   flex: 7;
    padding-top: 1em;
    padding-right: 1em;
-}
-
-.right-div {
-  float: right;
-  width: 7em;
-  text-align: center;
-  box-sizing: border-box;
-  padding-top: 1em;
 }
 
 .text-overflow {
