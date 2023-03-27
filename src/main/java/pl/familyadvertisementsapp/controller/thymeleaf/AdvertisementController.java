@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.thymeleaf;
+package pl.familyadvertisementsapp.controller.thymeleaf;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.familyadvertisementsapp.controller.MenuPage;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.AdvertisementService;
-import pl.familyadvertisementsapp.view.MenuPage;
 
 import java.util.Collection;
 import java.util.List;

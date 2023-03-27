@@ -7,7 +7,9 @@ import pl.familyadvertisementsapp.helper.UserSessionHelper;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -62,7 +64,7 @@ public class AdvertisementService {
 
     private void throwExceptionIfNotFound(Long id) throws AdvertisementServiceException {
         if (advertisementRepository.findById(id).isEmpty()) {
-            throw new AdvertisementServiceException("Advertisement with the given id doesn't exist.");
+            throw new AdvertisementServiceException("Advertisement with the given id doesn't exist");
         }
     }
 }

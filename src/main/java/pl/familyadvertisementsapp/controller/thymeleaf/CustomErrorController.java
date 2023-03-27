@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.thymeleaf;
+package pl.familyadvertisementsapp.controller.thymeleaf;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,7 +28,7 @@ public class CustomErrorController implements ErrorController {
         return "logged/blank";
     }
 
-     String getErrorView(Model model, String exceptionMessage) {
+    String getErrorView(Model model, String exceptionMessage) {
         model.addAttribute("errorMessage", exceptionMessage);
         return "logged/blank";
     }

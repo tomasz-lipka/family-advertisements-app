@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.thymeleaf;
+package pl.familyadvertisementsapp.controller.thymeleaf;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
