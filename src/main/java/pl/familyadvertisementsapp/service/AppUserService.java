@@ -34,7 +34,7 @@ public class AppUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         CustomUser customUser = appUserRepository.findByUsername(username);
         if (customUser == null) {
-            throw new UsernameNotFoundException("User with that name not found.");
+            throw new UsernameNotFoundException("User with that username not found.");
         }
         return User.builder()
                 .username(customUser.getUsername())

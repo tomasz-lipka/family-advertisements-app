@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.thymeleaf;
+package pl.familyadvertisementsapp.view.serverside.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;

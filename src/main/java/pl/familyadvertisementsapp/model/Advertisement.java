@@ -9,6 +9,11 @@ import lombok.Setter;
 
 import java.util.Date;
 
+/**
+ * Model class of the advertisement entity. Stored in persistence layer.
+ *
+ * @author Tomasz Lipka
+ */
 @Entity
 @Getter
 @Setter
@@ -20,12 +25,12 @@ public class Advertisement implements Comparable<Advertisement> {
 
     @NotNull
     @Size(min = 5, max = 20, message = "Must have at least 5 and maximum of 20 characters")
-    @NotBlank(message = "Title may not be blank.")
+    @NotBlank(message = "Title may not be blank")
     private String title;
 
-    @Column(length = 9999)
+    @Column(length = 500)
     @NotNull
-    @Size(min = 20, max = 550, message = "Must have at least 20 and a maximum of 550 characters")
+    @Size(min = 20, max = 500, message = "Must have at least 20 and a maximum of 500 characters")
     @NotBlank(message = "Description may not be blank")
     private String description;
 
@@ -35,9 +40,9 @@ public class Advertisement implements Comparable<Advertisement> {
 
     @Override
     public int compareTo(Advertisement advertisement) {
-        long thisMilis = created.getTime();
-        long anotherMilis = advertisement.getCreated().getTime();
+        long thisMillis = created.getTime();
+        long anotherMillis = advertisement.getCreated().getTime();
 
-        return Long.compare(anotherMilis, thisMilis);
+        return Long.compare(anotherMillis, thisMillis);
     }
 }

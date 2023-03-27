@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.view.serverside;
 
 public enum MenuPage {
     MY,

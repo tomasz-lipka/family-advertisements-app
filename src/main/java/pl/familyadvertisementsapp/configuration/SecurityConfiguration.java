@@ -10,10 +10,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Spring security configuration for authentication and password encoding.
+ *
+ * @author Tomasz Lipka
+ */
 @Configuration
 @EnableWebSecurity
-//TODO
-//@EnableMethodSecurity
 public class SecurityConfiguration {
 
     @Bean
@@ -22,7 +25,6 @@ public class SecurityConfiguration {
                 .httpBasic()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
-                //TODO need "/authentication" ?
                 .requestMatchers("/styles/**", "/registration", "/authentication").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()

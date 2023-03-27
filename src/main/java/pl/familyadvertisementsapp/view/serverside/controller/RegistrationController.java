@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.thymeleaf;
+package pl.familyadvertisementsapp.view.serverside.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

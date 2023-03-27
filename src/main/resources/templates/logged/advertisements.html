@@ -15,8 +15,8 @@
       <p class="message-core message-success text-align-center" th:if="${param.created}">New advertisement created</p>
       <p class="message-core message-success text-align-center" th:if="${param.deleted}">Advertisement deleted</p>
       <p class="message-core message-success text-align-center" th:if="${param.updated}">Advertisement updated</p>
-      <table>
-         <tr th:each="advertisement: ${advertisements}">
+      <table th:each="advertisement: ${advertisements}">
+         <tr>
             <div class="flex-container">
                <div class="outer-left-flex">
                   <div class="inner-left-flex">
@@ -38,8 +38,8 @@
                   </form>
                </div>
             </div>
-            <br>
          </tr>
+         <br>
       </table>
    </body>
 </html>
