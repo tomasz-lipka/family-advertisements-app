@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.rest;
+package pl.familyadvertisementsapp.controller.rest.errorhandling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

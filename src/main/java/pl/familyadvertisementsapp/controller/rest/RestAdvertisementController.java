@@ -1,10 +1,11 @@
 package pl.familyadvertisementsapp.controller.rest;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.familyadvertisementsapp.controller.serverside.CustomErrorController;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.exception.RestAdvertisementControllerException;
 import pl.familyadvertisementsapp.model.Advertisement;
@@ -18,7 +19,6 @@ import java.util.List;
 public class RestAdvertisementController {
 
     private final AdvertisementService advertisementService;
-    private final CustomErrorController customErrorController;
 
     @GetMapping()
     public List<Advertisement> getAdvertisements() {
@@ -35,15 +35,15 @@ public class RestAdvertisementController {
     }
 
     @PostMapping()
-    //TODO @valid
-    public ResponseEntity<HttpStatus> create(@RequestBody Advertisement advertisement) {
+    public ResponseEntity<HttpStatus> create(@RequestBody @Valid Advertisement advertisement, BindingResult result) {
+        throwBindingResultException(result);
         advertisementService.create(advertisement);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping()
-    //TODO @valid
-    public ResponseEntity<HttpStatus> update(@RequestBody Advertisement advertisement) {
+    public ResponseEntity<HttpStatus> update(@RequestBody @Valid Advertisement advertisement, BindingResult result) {
+        throwBindingResultException(result);
         try {
             advertisementService.update(advertisement);
         } catch (AdvertisementServiceException e) {
@@ -60,5 +60,11 @@ public class RestAdvertisementController {
             throw new RestAdvertisementControllerException(e.getMessage());
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private static void throwBindingResultException(BindingResult result) {
+        if (result.hasErrors()) {
+            throw new RestAdvertisementControllerException(result.toString());
+        }
     }
 }
