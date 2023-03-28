@@ -45,4 +45,10 @@ public class Advertisement implements Comparable<Advertisement> {
 
         return Long.compare(anotherMillis, thisMillis);
     }
+
+    public void update(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.created = new Date();
+    }
 }

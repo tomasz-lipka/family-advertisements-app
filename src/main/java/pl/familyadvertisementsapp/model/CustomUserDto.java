@@ -7,6 +7,12 @@ import lombok.Setter;
 
 import java.util.Arrays;
 
+/**
+ * Data transfer (form transfer) class.
+ * Allows to retrieve the credentials during registration process and pass them into the destination controller method.
+ *
+ * @author Tomasz Lipka
+ */
 @Getter
 @Setter
 public class CustomUserDto {

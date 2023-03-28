@@ -11,8 +11,8 @@
       <hr>
       <br>
       <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="${restMethod}">
-         <p class="message-core message-error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
-         <p class="message-core message-error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+         <p class="message-core message-info" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+         <p class="message-core message-info" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
          <input type="hidden" th:field="*{id}"/>
          <h3>title</h3>
          <div>

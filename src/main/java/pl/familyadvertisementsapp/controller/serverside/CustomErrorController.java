@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.serverside.controller;
+package pl.familyadvertisementsapp.controller.serverside;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,24 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
-    //TODO split method
     public String handleError(HttpServletRequest request, Model model) {
-        model.addAttribute("errorMessage", "Sorry, something went wrong");
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+        System.out.println("context path");
+        System.out.println(request.getContextPath());
         if (status != null) {
             int statusCode = Integer.parseInt(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                model.addAttribute("errorMessage", "The page you're looking for doesn't exist");
+                model.addAttribute("infoMessage", "The page you're looking for doesn't exist");
+            } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
+                model.addAttribute("infoMessage", "This request is not supported");
+            } else {
+                model.addAttribute("errorMessage", "Sorry, something went wrong");
             }
-            if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
-                model.addAttribute("errorMessage", "This request is not supported");
-            }
+        } else {
+            model.addAttribute("errorMessage", "Sorry, something went wrong");
         }
         return "logged/blank";
     }
 
     String getErrorView(Model model, String exceptionMessage) {
-        model.addAttribute("errorMessage", exceptionMessage);
+        model.addAttribute("infoMessage", exceptionMessage);
         return "logged/blank";
     }
 }

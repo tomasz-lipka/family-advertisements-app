@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class provides CRUD methods to manipulate the Advertisement model entities.
+ * This class provides CRUD methods to manage the Advertisement model entities.
  *
  * @author Tomasz Lipka
  */
@@ -20,9 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 public class AdvertisementService {
 
-    //TODO make all lombok's final
-    private AdvertisementRepository advertisementRepository;
-    private UserSessionHelper userSessionHelper;
+    private final AdvertisementRepository advertisementRepository;
+    private final UserSessionHelper userSessionHelper;
     private AdvertisementVerifier advertisementVerifier;
 
     public List<Advertisement> getAll() {
@@ -31,12 +30,12 @@ public class AdvertisementService {
         return advertisements;
     }
 
-    public Advertisement getById(Long id) throws AdvertisementServiceException {
-        return getVerified(id);
+    public Advertisement getBy(Long id) throws AdvertisementServiceException {
+        return getIfOwnedAndExistsBy(id);
     }
 
-    public void deleteById(Long id) throws AdvertisementServiceException {
-        Advertisement advertisement = getVerified(id);
+    public void deleteBy(Long id) throws AdvertisementServiceException {
+        Advertisement advertisement = getIfOwnedAndExistsBy(id);
         advertisementRepository.deleteById(advertisement.getId());
     }
 
@@ -52,15 +51,13 @@ public class AdvertisementService {
         advertisementRepository.save(advertisement);
     }
 
-    public void update(Advertisement oldAdvertisement) throws AdvertisementServiceException {
-        Advertisement newAdvertisement = getVerified(oldAdvertisement.getId());
-        newAdvertisement.setTitle(oldAdvertisement.getTitle());
-        newAdvertisement.setDescription(oldAdvertisement.getDescription());
-        newAdvertisement.setCreated(new Date());
-        advertisementRepository.save(newAdvertisement);
+    public void update(Advertisement formAdvertisement) throws AdvertisementServiceException {
+        Advertisement advertisement = getIfOwnedAndExistsBy(formAdvertisement.getId());
+        advertisement.update(formAdvertisement.getTitle(), formAdvertisement.getDescription());
+        advertisementRepository.save(advertisement);
     }
 
-    private Advertisement getVerified(Long id) throws AdvertisementServiceException {
+    private Advertisement getIfOwnedAndExistsBy(Long id) throws AdvertisementServiceException {
         return advertisementVerifier
                 .findBy(id)
                 .doesOwnerMatchLoggedInUser();

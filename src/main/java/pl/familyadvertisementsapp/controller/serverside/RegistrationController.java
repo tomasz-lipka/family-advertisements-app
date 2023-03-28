@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.serverside.controller;
+package pl.familyadvertisementsapp.controller.serverside;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.familyadvertisementsapp.configuration.SecurityConfiguration;
-import pl.familyadvertisementsapp.exception.AppUserServiceException;
+import pl.familyadvertisementsapp.exception.CustomUserServiceException;
 import pl.familyadvertisementsapp.model.CustomUserDto;
-import pl.familyadvertisementsapp.service.AppUserService;
+import pl.familyadvertisementsapp.service.appuser.CustomUserService;
 
 import java.nio.CharBuffer;
 
@@ -21,7 +21,7 @@ import java.nio.CharBuffer;
 @AllArgsConstructor
 public class RegistrationController {
 
-    private AppUserService appUserService;
+    private CustomUserService customUserService;
     private SecurityConfiguration securityConfiguration;
 
     @GetMapping()
@@ -36,20 +36,20 @@ public class RegistrationController {
         if (result.hasErrors()) {
             return "unlogged/registration";
         }
-        try {
-            createUserWithEncodedPassword(customUserDto);
-            customUserDto.clearPassword();
-        } catch (AppUserServiceException e) {
-            return "redirect:/registration?exists";
-        }
-        return "redirect:/authentication?created";
+        return createUserWithEncodedPassword(customUserDto);
     }
 
-    private void createUserWithEncodedPassword(CustomUserDto customUserDto) throws AppUserServiceException {
+    private String createUserWithEncodedPassword(CustomUserDto customUserDto) {
         char[] charPassword = customUserDto.getPassword();
         String encodedPassword = getEncodedPassword(charPassword);
         String username = customUserDto.getUsername();
-        appUserService.createAppUser(username, encodedPassword);
+        try {
+            customUserService.create(username, encodedPassword);
+            customUserDto.clearPassword();
+        } catch (CustomUserServiceException e) {
+            return "redirect:/registration?exists";
+        }
+        return "redirect:/authentication?created";
     }
 
     private String getEncodedPassword(char[] charPassword) {

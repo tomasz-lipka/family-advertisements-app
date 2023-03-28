@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.serverside.controller;
+package pl.familyadvertisementsapp.controller.serverside;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
-import pl.familyadvertisementsapp.view.serverside.MenuPage;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,8 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class AdvertisementController {
 
-    private AdvertisementService advertisementService;
-    private CustomErrorController customErrorController;
+    private final AdvertisementService advertisementService;
+    private final CustomErrorController customErrorController;
 
     @GetMapping("/all")
     public String getAllView(Model model) {
@@ -61,17 +60,19 @@ public class AdvertisementController {
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id, Model model) {
         try {
-            advertisementService.deleteById(id);
+            advertisementService.deleteBy(id);
             return "redirect:/advertisements/my?deleted";
         } catch (AdvertisementServiceException e) {
             return customErrorController.getErrorView(model, e.getMessage());
         }
+//        String[] asd = {"asd"};
+//        return asd[2];
     }
 
     @GetMapping("/{id}/editor")
     public String getEditorView(@PathVariable Long id, Model model) {
         try {
-            Advertisement advertisement = advertisementService.getById(id);
+            Advertisement advertisement = advertisementService.getBy(id);
             model.addAttribute("advertisement", advertisement);
             model.addAttribute("restMethod", "PUT");
             return "logged/creator-editor";

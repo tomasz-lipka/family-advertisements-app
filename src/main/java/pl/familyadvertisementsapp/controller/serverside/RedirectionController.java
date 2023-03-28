@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.view.serverside.controller;
+package pl.familyadvertisementsapp.controller.serverside;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

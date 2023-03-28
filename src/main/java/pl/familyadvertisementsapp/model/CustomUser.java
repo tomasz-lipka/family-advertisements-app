@@ -1,15 +1,21 @@
 package pl.familyadvertisementsapp.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
+/**
+ * Model class of the CustomUser entity. Stored in persistence layer.
+ *
+ * @author Tomasz Lipka
+ */
 @Entity
 @Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomUser {
 
     @Id

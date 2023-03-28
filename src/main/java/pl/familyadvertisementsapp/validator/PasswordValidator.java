@@ -7,11 +7,13 @@ import java.nio.CharBuffer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Password validator class. Allows to check if the password given by the user, meets the imposed restrictions.
+ *
+ * @author Tomasz Lipka
+ */
 public class PasswordValidator
         implements ConstraintValidator<ValidPassword, char[]> {
-
-    private Pattern pattern;
-    private Matcher matcher;
 
     private static final String AT_LEAST_ONE_ENGLISH_LETTER = "(?=.*?[A-Za-z])";
     private static final String AT_LEAST_ONE_DIGIT = "(?=.*?[0-9])";
@@ -31,8 +33,8 @@ public class PasswordValidator
     }
 
     private boolean validatePassword(char[] password) {
-        pattern = Pattern.compile(PASSWORD_PATTERN);
-        matcher = pattern.matcher(CharBuffer.wrap(password));
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(CharBuffer.wrap(password));
         return matcher.matches();
     }
 }
