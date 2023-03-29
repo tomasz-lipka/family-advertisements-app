@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.rest;
+package pl.familyadvertisementsapp.poc.restapi.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
-import pl.familyadvertisementsapp.exception.RestAdvertisementControllerException;
+import pl.familyadvertisementsapp.poc.restapi.exception.RestAdvertisementControllerException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 
 import java.util.List;
 
+//TODO restcontroloer: This class is made only for proof of concept reasons. The logic here is a duplicate of...
 @RestController
 @RequestMapping("rest/advertisements")
 @AllArgsConstructor

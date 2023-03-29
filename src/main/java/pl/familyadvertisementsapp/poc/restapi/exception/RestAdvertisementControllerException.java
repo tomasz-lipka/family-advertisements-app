@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.exception;
+package pl.familyadvertisementsapp.poc.restapi.exception;
 
 public class RestAdvertisementControllerException extends RuntimeException {
 

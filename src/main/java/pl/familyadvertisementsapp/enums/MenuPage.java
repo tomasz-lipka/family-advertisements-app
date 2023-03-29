@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.serverside.enums;
+package pl.familyadvertisementsapp.enums;
 
 /**
  * Enum to specify the active menu navigation bar item. Used in the view.

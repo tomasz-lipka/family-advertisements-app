@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.serverside;
+package pl.familyadvertisementsapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

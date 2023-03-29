@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.serverside;
+package pl.familyadvertisementsapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.familyadvertisementsapp.controller.serverside.enums.MenuPage;
+import pl.familyadvertisementsapp.enums.MenuPage;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;

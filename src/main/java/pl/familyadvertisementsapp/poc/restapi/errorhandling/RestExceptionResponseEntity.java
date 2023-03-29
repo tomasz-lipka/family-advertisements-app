@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller.rest.errorhandling;
+package pl.familyadvertisementsapp.poc.restapi.errorhandling;
 
 import org.springframework.http.HttpStatus;
 

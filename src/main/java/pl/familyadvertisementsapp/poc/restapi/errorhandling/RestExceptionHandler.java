@@ -1,10 +1,10 @@
-package pl.familyadvertisementsapp.controller.rest.errorhandling;
+package pl.familyadvertisementsapp.poc.restapi.errorhandling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import pl.familyadvertisementsapp.exception.RestAdvertisementControllerException;
+import pl.familyadvertisementsapp.poc.restapi.exception.RestAdvertisementControllerException;
 
 import java.util.Date;
 
