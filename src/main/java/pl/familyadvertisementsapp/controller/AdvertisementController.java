@@ -2,11 +2,12 @@ package pl.familyadvertisementsapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.familyadvertisementsapp.enums.MenuPage;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
@@ -56,6 +57,13 @@ public class AdvertisementController {
         }
         advertisementService.create(advertisement);
         return "redirect:/advertisements/all?created";
+    }
+
+    ////
+    @PostMapping("/test")
+    public ResponseEntity<Advertisement> createTest(@RequestBody Advertisement advertisement) {
+        advertisementService.create(advertisement);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

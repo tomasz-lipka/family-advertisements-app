@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * TODO overrides the default Whitelabel Error Page
+ */
 @Controller
 public class CustomErrorController implements ErrorController {
 

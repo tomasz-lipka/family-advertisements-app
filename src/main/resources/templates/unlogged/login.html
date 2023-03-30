@@ -6,22 +6,26 @@
       <link th:href="@{/styles/global/main.css}" rel="stylesheet">
    </head>
    <body class="text-align-center">
-      <h1>Family Advertisements</h1>
-      <p>Simple app to share advertisements with your family and friends</p>
-      <form th:action="@{/authentication}" method="POST">
-         <p class="message-core message-info" th:if="${param.error}">Wrong password or user doesn't exist (please sign up first)</p>
-         <p class="message-core message-success" th:if="${param.created}">User created. You can sign in</p>
-         <input type="text" name="username" placeholder="username"/>
-         <input type="password" name="password" placeholder="password"/>
-         <br><br>
-         <input type="submit" value="sign in"/>
-      </form>
-      <br>
-      <a class="hyperlink" th:href="@{/registration}">sing up</a>
-      <br><br><br><br>
-      <p class="message-core message-info">
-         Note:<br>
-         This is an educational project made for learning purposes.<br>
-         I do not take any responsibility for the data you store in this application.</p>
+      <div th:insert="global/top-bar :: top-bar"></div>
+      <div class="side-margins">
+         <h1>Family Advertisements</h1>
+         <p>Simple app to share advertisements with your family and friends</p>
+         <form th:action="@{/authentication}" method="POST">
+            <p class="message-core message-info" th:if="${param.error}">Wrong password or user doesn't exist (please sign up first)</p>
+            <p class="message-core message-success" th:if="${param.created}">User created. You can sign in</p>
+            <input type="text" name="username" placeholder="username"/>
+            <input type="password" name="password" placeholder="password"/>
+            <br><br>
+            <input type="submit" value="sign in"/>
+         </form>
+         <br>
+         <a class="hyperlink" th:href="@{/registration}">sing up</a>
+         <br><br><br><br>
+         <p class="note">
+            Note:<br>
+            This is an educational project made for learning purposes.<br>
+            I do not take any responsibility for the data you store in this application.
+         </p>
+      </div>
    </body>
 </html>

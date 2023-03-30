@@ -8,38 +8,41 @@
       <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
    </head>
    <body>
-      <div th:insert="logged/blank :: menu"></div>
-      <hr>
-      <br>
-      <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements</p>
-      <p class="message-core message-success text-align-center" th:if="${param.created}">New advertisement created</p>
-      <p class="message-core message-success text-align-center" th:if="${param.deleted}">Advertisement deleted</p>
-      <p class="message-core message-success text-align-center" th:if="${param.updated}">Advertisement updated</p>
-      <table th:each="advertisement: ${advertisements}">
-         <tr>
-            <div class="flex-container">
-               <div class="outer-left-flex">
-                  <div class="inner-left-flex">
-                     <h2 class="adv-title" th:text="${advertisement.title}"></h2>
-                     <p th:text="${advertisement.ownerUsername}"></p>
-                     <p class="adv-date" th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></p>
-                  </div>
-                  <div class="inner-right-flex">
-                     <div class="text-overflow" th:text="${advertisement.description}"></div>
-                  </div>
-               </div>
-               <div class="outer-right-flex" th:if="${selectedMenuPage == 'MY'}">
-                  <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" th:method="GET">
-                     <input type="submit" value="edit"/>
-                  </form>
-                  <br><br>
-                  <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE">
-                     <input type="submit" value="delete"/>
-                  </form>
-               </div>
-            </div>
-         </tr>
+      <div th:insert="global/top-bar :: top-bar"></div>
+      <div class="side-margins">
+         <div th:insert="logged/blank :: menu"></div>
+         <hr>
          <br>
-      </table>
+         <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements</p>
+         <p class="message-core message-success text-align-center" th:if="${param.created}">New advertisement created</p>
+         <p class="message-core message-success text-align-center" th:if="${param.deleted}">Advertisement deleted</p>
+         <p class="message-core message-success text-align-center" th:if="${param.updated}">Advertisement updated</p>
+         <table th:each="advertisement: ${advertisements}">
+            <tr>
+               <div class="flex-container">
+                  <div class="outer-left-flex">
+                     <div class="inner-left-flex">
+                        <h2 class="adv-title" th:text="${advertisement.title}"></h2>
+                        <p th:text="${advertisement.ownerUsername}"></p>
+                        <p class="adv-date" th:text="${#dates.format(advertisement.created, 'dd.MM.yyyy HH:mm')}"></p>
+                     </div>
+                     <div class="inner-right-flex">
+                        <div class="text-overflow" th:text="${advertisement.description}"></div>
+                     </div>
+                  </div>
+                  <div class="outer-right-flex" th:if="${selectedMenuPage == 'MY'}">
+                     <form th:action="@{/advertisements/{id}/editor(id = ${advertisement.id})}" th:method="GET">
+                        <input type="submit" value="edit"/>
+                     </form>
+                     <br><br>
+                     <form th:action="@{/advertisements/{id}(id = ${advertisement.id})}" th:method="DELETE">
+                        <input type="submit" value="delete"/>
+                     </form>
+                  </div>
+               </div>
+            </tr>
+            <br>
+         </table>
+      </div>
    </body>
 </html>

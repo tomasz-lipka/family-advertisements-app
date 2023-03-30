@@ -7,17 +7,20 @@
       <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
    </head>
    <body class="text-align-center">
-      <div th:fragment="menu">
-         <ul class="text-align-center menu-bar">
-            <li><a th:class="${selectedMenuPage eq 'ALL'} ? 'active'" th:href="@{/advertisements/all}">home</a></li>
-            <li><a th:class="${selectedMenuPage eq 'CREATOR'} ? 'active'" th:href="@{/advertisements/creator}">create advertisement</a></li>
-            <li><a th:class="${selectedMenuPage eq 'MY'} ? 'active'" th:href="@{/advertisements/my}">my advertisements</a></li>
-            <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
-         </ul>
+      <div th:insert="global/top-bar :: top-bar"></div>
+      <div class="side-margins">
+         <div th:fragment="menu">
+            <ul class="text-align-center menu-bar">
+               <li><a th:class="${selectedMenuPage eq 'ALL'} ? 'active'" th:href="@{/advertisements/all}">home</a></li>
+               <li><a th:class="${selectedMenuPage eq 'CREATOR'} ? 'active'" th:href="@{/advertisements/creator}">create advertisement</a></li>
+               <li><a th:class="${selectedMenuPage eq 'MY'} ? 'active'" th:href="@{/advertisements/my}">my advertisements</a></li>
+               <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
+            </ul>
+         </div>
+         <hr>
+         <br>
+         <p class="message-core message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+         <p class="message-core message-info" th:if="${infoMessage}" th:text="${infoMessage}"></p>
       </div>
-      <hr>
-      <br>
-      <p class="message-core message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
-      <p class="message-core message-info" th:if="${infoMessage}" th:text="${infoMessage}"></p>
    </body>
 </html>

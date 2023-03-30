@@ -6,21 +6,24 @@
       <link th:href="@{/styles/global/main.css}" rel="stylesheet">
    </head>
    <body class="text-align-center">
-      <h1>Create account</h1>
-      <form th:action="@{/registration}" th:object="${customUserDto}" th:method="POST">
-         <p class="message-core message-info" th:if="${param.exists}">Username already exists. Please pick another username</p>
-         <p class="message-core message-info" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-         <p class="message-core message-info" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-         <input type="text" th:field="*{username}" placeholder="username"
-            required="required"/>
-         <input type="password" th:field="*{password}" placeholder="password"
-            required="required"/>
+      <div th:insert="global/top-bar :: top-bar"></div>
+      <div class="side-margins">
+         <h1>Create account</h1>
+         <form th:action="@{/registration}" th:object="${customUserDto}" th:method="POST">
+            <p class="message-core message-info" th:if="${param.exists}">Username already exists. Please pick another username</p>
+            <p class="message-core message-info" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+            <p class="message-core message-info" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            <input type="text" th:field="*{username}" placeholder="username"
+               required="required"/>
+            <input type="password" th:field="*{password}" placeholder="password"
+               required="required"/>
+            <br>
+            <p><small>Password must have at least 3 characters, one english letter and one number</small></p>
+            <br>
+            <input type="submit" value="sign up"/>
+         </form>
          <br>
-         <p><small>Password must have at least 3 characters, one english letter and one number</small></p>
-         <br>
-         <input type="submit" value="sign up"/>
-      </form>
-      <br>
-      <a class="hyperlink" th:href="@{/authentication}">sing in</a>
+         <a class="hyperlink" th:href="@{/authentication}">sing in</a>
+      </div>
    </body>
 </html>

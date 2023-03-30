@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@ToString
 public class Advertisement implements Comparable<Advertisement> {
 
     @Id

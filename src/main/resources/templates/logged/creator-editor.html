@@ -7,23 +7,26 @@
       <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
    </head>
    <body>
-      <div th:insert="logged/blank :: menu"></div>
-      <hr>
-      <br>
-      <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="${restMethod}">
-         <p class="message-core message-info" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
-         <p class="message-core message-info" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
-         <input type="hidden" th:field="*{id}"/>
-         <h3>title</h3>
-         <div>
-            <input class="input-width-short" type="text" th:field="*{title}" minlength="5" maxlength="20" required="required"/>
-         </div>
+      <div th:insert="global/top-bar :: top-bar"></div>
+      <div class="side-margins">
+         <div th:insert="logged/blank :: menu"></div>
+         <hr>
          <br>
-         <h3>description</h3>
-         <textarea class="input-width" rows="7" th:field="*{description}" minlength="20" maxlength="500"
-            required="required"></textarea>
-         <br><br>
-         <input type="submit" value="publish"/>
-      </form>
+         <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="${restMethod}">
+            <p class="message-core message-info" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+            <p class="message-core message-info" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+            <input type="hidden" th:field="*{id}"/>
+            <h3>title</h3>
+            <div>
+               <input class="input-width-short" type="text" th:field="*{title}" minlength="5" maxlength="20" required="required"/>
+            </div>
+            <br>
+            <h3>description</h3>
+            <textarea class="input-width" rows="7" th:field="*{description}" minlength="20" maxlength="500"
+               required="required"></textarea>
+            <br><br>
+            <input type="submit" value="publish"/>
+         </form>
+      </div>
    </body>
 </html>
