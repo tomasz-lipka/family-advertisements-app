@@ -2,8 +2,6 @@ package pl.familyadvertisementsapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,13 +57,6 @@ public class AdvertisementController {
         return "redirect:/advertisements/all?created";
     }
 
-    ////
-    @PostMapping("/test")
-    public ResponseEntity<Advertisement> createTest(@RequestBody Advertisement advertisement) {
-        advertisementService.create(advertisement);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id, Model model) {
         try {
@@ -74,7 +65,8 @@ public class AdvertisementController {
         } catch (AdvertisementServiceException e) {
             return customErrorController.getErrorView(model, e.getMessage());
         }
-//        String[] asd = {"asd"};
+        //TODO delete
+//        String[] asd = {"check error"};
 //        return asd[2];
     }
 

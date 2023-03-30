@@ -48,10 +48,6 @@ public class AdvertisementService {
     public void create(Advertisement advertisement) {
         advertisement.setOwnerUsername(getLoggedInUsername());
         advertisement.setCreated(new Date());
-
-        //TODO
-        System.out.println(advertisement.toString());
-
         advertisementRepository.save(advertisement);
     }
 
