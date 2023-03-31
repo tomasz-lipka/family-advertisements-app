@@ -1,6 +1,7 @@
 package pl.familyadvertisementsapp.model;
 
 import org.junit.jupiter.api.Test;
+import pl.familyadvertisementsapp.model.dto.CustomUserDto;
 
 import java.util.Arrays;
 

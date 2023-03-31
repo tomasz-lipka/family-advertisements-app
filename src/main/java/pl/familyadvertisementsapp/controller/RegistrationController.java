@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.familyadvertisementsapp.configuration.SecurityConfiguration;
 import pl.familyadvertisementsapp.exception.CustomUserServiceException;
-import pl.familyadvertisementsapp.model.CustomUserDto;
+import pl.familyadvertisementsapp.model.dto.CustomUserDto;
 import pl.familyadvertisementsapp.service.customuser.CustomUserService;
 
 import java.nio.CharBuffer;

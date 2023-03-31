@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.model;
+package pl.familyadvertisementsapp.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,7 +21,6 @@ import java.util.Arrays;
 @NoArgsConstructor
 public class CustomUserDto {
 
-    //TODO temporarily disable password and username validation -> then enable; also in HTML!!!
     @NotNull
 //    @Size(min = 3, max = 10, message = "Username must have at least 3 and a maximum of 10 characters.")
     @NotBlank(message = "Username may not be blank")
