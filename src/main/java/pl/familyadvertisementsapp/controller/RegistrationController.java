@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.familyadvertisementsapp.configuration.SecurityConfiguration;
 import pl.familyadvertisementsapp.exception.CustomUserServiceException;
 import pl.familyadvertisementsapp.model.CustomUserDto;
-import pl.familyadvertisementsapp.service.appuser.CustomUserService;
+import pl.familyadvertisementsapp.service.customuser.CustomUserService;
 
 import java.nio.CharBuffer;
 
@@ -32,7 +32,7 @@ public class RegistrationController {
     }
 
     @PostMapping()
-    public String createAppUser(@Valid CustomUserDto customUserDto, BindingResult result) {
+    public String createCustomUser(@Valid CustomUserDto customUserDto, BindingResult result) {
         if (result.hasErrors()) {
             return "unlogged/registration";
         }

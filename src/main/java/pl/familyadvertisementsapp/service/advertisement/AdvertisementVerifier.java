@@ -1,5 +1,6 @@
 package pl.familyadvertisementsapp.service.advertisement;
 
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.AdvertisementVerifierException;
 import pl.familyadvertisementsapp.helper.UserSessionHelper;
@@ -43,5 +44,9 @@ public class AdvertisementVerifier {
         } else {
             throw new AdvertisementVerifierException("Logged in user isn't owner of this advertisement");
         }
+    }
+
+    public void setAdvertisement(Advertisement advertisement) {
+        this.advertisement = advertisement;
     }
 }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,7 +20,15 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Advertisement implements Comparable<Advertisement> {
+
+    public Advertisement(String title, String description, Date created, String ownerUsername) {
+        this.title = title;
+        this.description = description;
+        this.created = created;
+        this.ownerUsername = ownerUsername;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

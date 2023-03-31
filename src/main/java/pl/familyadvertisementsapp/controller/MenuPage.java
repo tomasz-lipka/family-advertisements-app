@@ -10,5 +10,3 @@ public enum MenuPage {
     ALL,
     CREATOR
 }
-
-//TODO where place this enum? In which package?

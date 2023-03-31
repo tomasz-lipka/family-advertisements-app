@@ -2,7 +2,9 @@ package pl.familyadvertisementsapp.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Arrays;
@@ -15,6 +17,8 @@ import java.util.Arrays;
  */
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomUserDto {
 
     //TODO temporarily disable password and username validation -> then enable; also in HTML!!!

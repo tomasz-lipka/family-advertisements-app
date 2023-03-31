@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.service.appuser;
+package pl.familyadvertisementsapp.service.customuser;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.CustomUserServiceException;
 import pl.familyadvertisementsapp.model.CustomUser;
-import pl.familyadvertisementsapp.repository.AppUserRepository;
+import pl.familyadvertisementsapp.repository.CustomUserRepository;
 
 /**
  * This class manages the user creation (registration) process.
@@ -20,23 +20,23 @@ import pl.familyadvertisementsapp.repository.AppUserRepository;
 public class CustomUserService implements UserDetailsService {
 
     private static final String DEFAULT_ROLE = "USER";
-    private final AppUserRepository appUserRepository;
+    private final CustomUserRepository customUserRepository;
 
     public void create(String username, String password) throws CustomUserServiceException {
         if (isUsernameAvailable(username)) {
             CustomUser customUser = new CustomUser(username, password);
-            appUserRepository.save(customUser);
+            customUserRepository.save(customUser);
         }
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        CustomUser customUser = appUserRepository.findByUsername(username);
+        CustomUser customUser = customUserRepository.findByUsername(username);
         return buildUser(customUser);
     }
 
     private boolean isUsernameAvailable(String username) throws CustomUserServiceException {
-        if (appUserRepository.findByUsername(username) != null) {
+        if (customUserRepository.findByUsername(username) != null) {
             throw new CustomUserServiceException("CustomUser with that username already exists");
         }
         return true;

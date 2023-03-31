@@ -13,6 +13,12 @@ import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Handles requests regarding the advertisement entities.
+ * Returns desired views, adds data to the model and accepts incoming data.
+ *
+ * @author Tomasz Lipka
+ */
 @Controller
 @RequestMapping("/advertisements")
 @AllArgsConstructor
@@ -20,6 +26,7 @@ public class AdvertisementController {
 
     private final AdvertisementService advertisementService;
     private final CustomErrorController customErrorController;
+    private final Advertisement advertisement;
 
     @GetMapping("/all")
     public String getAllView(Model model) {
@@ -39,7 +46,6 @@ public class AdvertisementController {
 
     @GetMapping("/creator")
     public String getCreatorView(Model model) {
-        Advertisement advertisement = new Advertisement();
         model.addAttribute("advertisement", advertisement);
         model.addAttribute("restMethod", "POST");
         model.addAttribute("selectedMenuPage", MenuPage.CREATOR.toString());
@@ -65,9 +71,6 @@ public class AdvertisementController {
         } catch (AdvertisementServiceException e) {
             return customErrorController.getErrorView(model, e.getMessage());
         }
-        //TODO delete
-//        String[] asd = {"check error"};
-//        return asd[2];
     }
 
     @GetMapping("/{id}/editor")

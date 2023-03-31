@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
       <title>Family Advertisements</title>
       <link th:href="@{/styles/global/main.css}" rel="stylesheet">
       <link th:href="@{/styles/logged/advertisements.css}" rel="stylesheet">
       <link th:href="@{/styles/logged/navigation.css}" rel="stylesheet">
    </head>
    <body>
-      <div th:insert="global/top-bar :: top-bar"></div>
+      <div th:insert="top-bar :: top-bar"></div>
       <div class="side-margins">
          <div th:insert="logged/blank :: menu"></div>
          <hr>
          <br>
-         <p th:if="${#lists.isEmpty(advertisements)}">There're no advertisements</p>
+         <p class="text-align-center" th:if="${#lists.isEmpty(advertisements)}">There're no advertisements</p>
          <p class="message-core message-success text-align-center" th:if="${param.created}">New advertisement created</p>
          <p class="message-core message-success text-align-center" th:if="${param.deleted}">Advertisement deleted</p>
          <p class="message-core message-success text-align-center" th:if="${param.updated}">Advertisement updated</p>
