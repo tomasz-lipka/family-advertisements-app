@@ -14,7 +14,7 @@
     <name>family-advertisements-app</name>
     <description>Simple app to share advertisements with your family and friends</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
