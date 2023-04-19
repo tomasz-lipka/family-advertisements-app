@@ -14,9 +14,9 @@
             <p class="message-core message-info" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
             <p class="message-core message-info" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
             <input type="text" th:field="*{username}" placeholder="username"
-               required="required"/>
+               required="required" minlength="3" maxlength="10"/>
             <input type="password" th:field="*{password}" placeholder="password"
-               required="required"/>
+               required="required" minlength="3"/>
             <br>
             <p><small>Password must have at least 3 characters, one english letter and one number</small></p>
             <br>
