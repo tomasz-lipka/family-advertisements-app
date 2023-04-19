@@ -14,11 +14,13 @@ input[type=submit] {
   background-color: #FF5733;
   border: none;
   color: white;
-  width: 5em;
+  width: 6em;
   height: 2.5em;
   text-decoration: none;
   cursor: pointer;
   font-size: 1em;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 .message-core {
@@ -76,6 +78,7 @@ input[type=submit] {
   font-size: 1em;
   text-decoration: none;
   color: white;
+  font-weight: bold;
 }
 
 a.top-bar-font:hover {

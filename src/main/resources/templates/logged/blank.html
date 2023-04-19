@@ -14,7 +14,7 @@
                <li><a th:class="${selectedMenuPage eq 'ALL'} ? 'active'" th:href="@{/advertisements/all}">home</a></li>
                <li><a th:class="${selectedMenuPage eq 'CREATOR'} ? 'active'" th:href="@{/advertisements/creator}">create advertisement</a></li>
                <li><a th:class="${selectedMenuPage eq 'MY'} ? 'active'" th:href="@{/advertisements/my}">my advertisements</a></li>
-               <li><a th:href="@{/logout}" th:text="'logout (' + ${#authentication.principal.username} + ')'"></a></li>
+               <li><a th:href="@{/logout}" th:text="'logout(' + ${#authentication.principal.username} + ')'"></a></li>
             </ul>
          </div>
          <hr>
