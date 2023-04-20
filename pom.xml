@@ -10,7 +10,7 @@
     </parent>
     <groupId>pl</groupId>
     <artifactId>family-advertisements-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>family-advertisements-app</name>
     <description>Simple app to share advertisements with your family and friends</description>
     <properties>
