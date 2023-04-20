@@ -9,7 +9,6 @@ Simple app to share advertisements with your family and friends <br />
 * [Screenshots](#screenshots)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Contact](#contact)
 
 
 ## General Information
@@ -46,7 +45,7 @@ User perspective:
 Implementation details:
 - _User_ and _Advertisement_ entities are stored in a relational database, utilizing JPA.
 - _User_ password is encoded using BCryptPasswordEncoder.
-- When passing _User_ password within the Java programm, no `String` is used, only `char[]`, which is cleared afterwards, for security reasons.
+- When passing _User_ password within the Java programm, no `String` is used, only `char[]`, which is cleared afterwards for security reasons.
 - User authentication utilizes Spring Security.
 - Key features are tested by unit and integration tests, with help of Mockito.
 - The UI is rendered by use of Thymeleaf.
