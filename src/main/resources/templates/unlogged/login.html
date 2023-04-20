@@ -13,7 +13,7 @@
          <form th:action="@{/authentication}" method="POST">
             <p class="message-core message-info" th:if="${param.error}">Wrong password or user doesn't exist (please sign up first)</p>
             <p class="message-core message-success" th:if="${param.created}">User created. You can sign in</p>
-            <input type="text" name="username" placeholder="username"/>
+            <input type="text" name="username" placeholder="username" maxlength="10"/>
             <input type="password" name="password" placeholder="password"/>
             <br><br>
             <input type="submit" value="sign in"/>
