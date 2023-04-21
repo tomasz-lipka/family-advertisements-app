@@ -1,7 +1,8 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.controller.html;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Redirects the user from "/" URL to the home page of the application.
@@ -9,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Tomasz Lipka
  */
 @Controller
-public class RedirectionController {
+public class RedirectionHtmlController {
 
     @GetMapping("/")
-    public String redirect() {
-        return "redirect:/advertisements/all";
+    public ModelAndView redirect() {
+        return new ModelAndView("redirect:/advertisements/all");
     }
 }

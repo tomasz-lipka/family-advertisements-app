@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.controller.html;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,9 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CustomErrorController implements ErrorController {
+public class CustomHtmlErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
@@ -29,8 +30,9 @@ public class CustomErrorController implements ErrorController {
         return "logged/blank";
     }
 
-    String getErrorView(Model model, String exceptionMessage) {
-        model.addAttribute("infoMessage", exceptionMessage);
-        return "logged/blank";
+    ModelAndView getErrorView(String exceptionMessage) {
+        ModelAndView mav = new ModelAndView("logged/blank");
+        mav.addObject("infoMessage", exceptionMessage);
+        return mav;
     }
 }

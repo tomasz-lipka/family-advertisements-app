@@ -1,4 +1,4 @@
-package pl.familyadvertisementsapp.controller;
+package pl.familyadvertisementsapp.controller.html;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -31,6 +31,7 @@ public class RegistrationController {
         return "unlogged/registration";
     }
 
+    // TODO create also a rest method for this
     @PostMapping()
     public String createCustomUser(@Valid CustomUserDto customUserDto, BindingResult result) {
         if (result.hasErrors()) {

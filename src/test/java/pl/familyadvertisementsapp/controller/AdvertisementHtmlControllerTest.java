@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-class AdvertisementControllerTest {
+class AdvertisementHtmlControllerTest {
 
     private final String TITLE_PARAM = "title";
     private final String DESCRIPTION_PARAM = "description";
