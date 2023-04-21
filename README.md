@@ -1,6 +1,7 @@
 # Family Advertisements
 Simple app to share advertisements with your family and friends <br />
-> Live demo hosted on Microsoft Azure [_here_](https://serv-family-advertisements.azuremicroservices.io/authentication?logout).
+
+[//]: # (> Live demo hosted on Microsoft Azure [_here_]&#40;https://serv-family-advertisements.azuremicroservices.io/authentication?logout&#41;.)
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -25,9 +26,11 @@ close ones to let them know that you throw a party or need help with your broken
 - Spring boot starter web - version 3.0.4
 - Spring boot starter security - version 3.0.4
 - Spring boot starter data jpa - version 3.0.4
-- Spring boot starter thymeleaf - version 3.0.4
 - Spring boot starter validation - version 3.0.4
 - Spring boot starter test - version 3.0.4
+- Thymeleaf - version 3.0.4
+  - HTML templates
+  - CSS styling
 - Lombok - version 1.18.26
 - Jasypt - version 2.1.2
 - Persistence layer - Microsoft Azure SQL Database
@@ -67,13 +70,10 @@ Project is: _in progress_, but a stable first version is already deployed.
 
 
 ## Room for Improvement
-Room for improvement:
-- Thymeleaf: `use the complete syntax of fragment expressions instead ("~{top-bar :: top-bar}")`
-- My Advertisements page -> when title is wrapping then the rows are very close to each other
-- Change `RegistrationController` to `UserController`
-
 To do:
-- YAML configuration file instead of application.properties
-- Hover of sign-up and sign-in buttons
+- YAML configuration file instead of application.properties.
+- Add admin group (now there is only a single user group).
+- Add _change password_ feature.
+- Add a family/friends membership group, to limit visibility of an _Advertisement_ to a single group of people.
 
 
