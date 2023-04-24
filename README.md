@@ -1,7 +1,7 @@
 # Family Advertisements
 Simple app to share advertisements with your family and friends <br />
 
-[//]: # (> Live demo hosted on Microsoft Azure [_here_]&#40;https://serv-family-advertisements.azuremicroservices.io/authentication?logout&#41;.)
+> Live demo hosted on Microsoft Azure [_here_](https://family-advertisements.kindfield-de13d961.westeurope.azurecontainerapps.io/).
 
 ## Table of Contents
 * [General Info](#general-information)
