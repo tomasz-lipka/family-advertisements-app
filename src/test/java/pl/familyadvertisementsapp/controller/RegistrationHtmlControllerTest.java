@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-class RegistrationControllerTest {
+class RegistrationHtmlControllerTest {
 
     private final String USERNAME_PARAM = "username";
     private final String PASSWORD_PARAM = "password";

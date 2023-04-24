@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import pl.familyadvertisementsapp.model.Advertisement;
 
-public abstract class AdvertisementBaseController<T> {
+public abstract class AdvertisementAbstractController<T> {
 
     @GetMapping("/all")
     protected abstract T getAll();

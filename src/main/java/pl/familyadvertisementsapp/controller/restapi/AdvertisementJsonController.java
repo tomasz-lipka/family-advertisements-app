@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.familyadvertisementsapp.controller.base.AdvertisementBaseController;
+import pl.familyadvertisementsapp.controller.base.AdvertisementAbstractController;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
@@ -17,9 +17,9 @@ import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "rest/advertisements")
+@RequestMapping("rest/advertisements")
 @AllArgsConstructor
-public class AdvertisementJsonController extends AdvertisementBaseController {
+public class AdvertisementJsonController extends AdvertisementAbstractController {
 
     private final AdvertisementService advertisementService;
 

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CustomHtmlErrorController implements ErrorController {
 
+    //TODO model and view
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);

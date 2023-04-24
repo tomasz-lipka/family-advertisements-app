@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.familyadvertisementsapp.controller.base.AdvertisementBaseController;
+import pl.familyadvertisementsapp.controller.base.AdvertisementAbstractController;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
@@ -28,7 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/advertisements")
 @AllArgsConstructor
-public class AdvertisementHtmlController extends AdvertisementBaseController {
+public class AdvertisementHtmlController extends AdvertisementAbstractController {
 
     private final CustomHtmlErrorController customHtmlErrorController;
     private final AdvertisementService advertisementService;
