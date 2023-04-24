@@ -21,10 +21,11 @@ public class RegistrationHtmlController extends RegistrationAbstractController {
     private CustomUserService customUserService;
 
     @GetMapping()
-    public ModelAndView getRegistrationView(Model model) {
+    public ModelAndView getRegistrationView() {
         CustomUserDto customUserDto = new CustomUserDto();
-        model.addAttribute("customUserDto", customUserDto);
-        return new ModelAndView("unlogged/registration");
+        ModelAndView mav = new ModelAndView("unlogged/registration");
+        mav.addObject("customUserDto", customUserDto);
+        return mav;
     }
 
     @Override

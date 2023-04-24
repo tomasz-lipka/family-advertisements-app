@@ -25,7 +25,9 @@ public class SecurityConfiguration {
                 .httpBasic()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/styles/**", "/registration", "/rest/registration", "/authentication").permitAll()
+                .requestMatchers(
+                        "/styles/**",
+                        "/registration", "/restapi/registration", "/authentication").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/authentication").permitAll()

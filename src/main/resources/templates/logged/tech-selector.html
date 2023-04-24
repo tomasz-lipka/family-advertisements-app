@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <title>Family Advertisements</title>
+      <link th:href="@{/styles/global/main.css}" rel="stylesheet">
+      <link th:href="@{/styles/logged/tech-selector.css}" rel="stylesheet">
+   </head>
+   <body class="text-align-center">
+      <div th:insert="top-bar :: top-bar"></div>
+      <div class="flex-container">
+         <div class="flex-cell"><a href="/advertisements/my">Server-side rendering using HTML templates. Utilizes Thymeleaf.</a></div>
+         <div class="flex-cell"><a href="/swagger-ui/index.html">REST API exposed with help of Swagger.</a></div>
+      </div>
+   </body>
+</html>

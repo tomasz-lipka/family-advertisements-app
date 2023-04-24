@@ -1,0 +1,24 @@
+.flex-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 2em;
+}
+
+.flex-cell {
+  border: 1px solid white;
+  background: #172026;
+  margin: 1em;
+  text-align: center;
+  padding: 7em 2em;
+  width: 20em;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: white;
+}
+
+a:hover {
+  color: #FF5733;
+}

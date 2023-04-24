@@ -14,7 +14,7 @@ import pl.familyadvertisementsapp.model.dto.CustomUserDto;
 import pl.familyadvertisementsapp.service.customuser.CustomUserService;
 
 @RestController
-@RequestMapping("/rest/registration")
+@RequestMapping("/restapi/registration")
 @AllArgsConstructor
 public class RegistrationJsonController extends RegistrationAbstractController {
 

@@ -33,8 +33,13 @@ close ones to let them know that you throw a party or need help with your broken
   - CSS styling
 - Lombok - version 1.18.26
 - Jasypt - version 2.1.2
+- SpringDoc OpenAPI - version 2.1.0
 - Persistence layer - Microsoft Azure SQL Database
 - Apache Tomcat server hosting -  Microsoft Azure Spring Apps
+
+I decided to use two approaches in terms of serving data to the end user:
+1. To expose a graphical UI, a server-side rendering Java template, namely Thymeleaf is used.
+2. As Thymeleaf does not support REST API, I implemented separately Rest Controllers. The REST API can be accessed via Swagger.
 
 
 ## Features

@@ -17,7 +17,7 @@ import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 import java.util.List;
 
 @RestController
-@RequestMapping("rest/advertisements")
+@RequestMapping("restapi/advertisements")
 @AllArgsConstructor
 public class AdvertisementJsonController extends AdvertisementAbstractController {
 

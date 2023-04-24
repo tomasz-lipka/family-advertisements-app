@@ -17,8 +17,6 @@ import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 import java.util.Collection;
 import java.util.List;
 
-//TODO desc "thymeleaf" for all controllers
-
 /**
  * Handles requests regarding the advertisement entities.
  * Returns desired views, adds data to the model and accepts incoming data.

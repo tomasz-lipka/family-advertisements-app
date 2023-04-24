@@ -5,30 +5,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CustomHtmlErrorController implements ErrorController {
 
-    //TODO model and view
     @RequestMapping("/error")
-    public String handleError(HttpServletRequest request, Model model) {
+    public ModelAndView handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+        ModelAndView mav = new ModelAndView("logged/blank");
         if (status != null) {
             int statusCode = Integer.parseInt(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                model.addAttribute("infoMessage", "The page you're looking for doesn't exist");
+                mav.addObject("infoMessage", "The page you're looking for doesn't exist");
             } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
-                model.addAttribute("infoMessage", "This request is not supported");
+                mav.addObject("infoMessage", "This request is not supported");
             } else {
-                model.addAttribute("errorMessage", "Sorry, something went wrong");
+                mav.addObject("errorMessage", "Sorry, something went wrong");
             }
         } else {
-            model.addAttribute("errorMessage", "Sorry, something went wrong");
+            mav.addObject("errorMessage", "Sorry, something went wrong");
         }
-        return "logged/blank";
+        return mav;
     }
 
     ModelAndView getErrorView(String exceptionMessage) {

@@ -14,6 +14,6 @@ public class RedirectionHtmlController {
 
     @GetMapping("/")
     public ModelAndView redirect() {
-        return new ModelAndView("redirect:/advertisements/all");
+        return new ModelAndView("redirect:/selector");
     }
 }
