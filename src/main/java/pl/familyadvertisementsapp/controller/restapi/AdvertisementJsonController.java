@@ -17,7 +17,7 @@ import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 import java.util.List;
 
 /**
- * Rest controller for the Advertisement entity REST API.
+ * Rest controller for the Advertisement entity.
  *
  * @author Tomasz Lipka
  */
