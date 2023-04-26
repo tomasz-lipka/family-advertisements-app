@@ -3,7 +3,6 @@ package pl.familyadvertisementsapp.controller.html;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +12,12 @@ import pl.familyadvertisementsapp.exception.CustomUserServiceException;
 import pl.familyadvertisementsapp.model.dto.CustomUserDto;
 import pl.familyadvertisementsapp.service.customuser.CustomUserService;
 
+/**
+ * Handles requests regarding the registration process.
+ * Returns registration view and handles create new user request.
+ *
+ * @author Tomasz Lipka
+ */
 @Controller
 @RequestMapping("registration")
 @AllArgsConstructor

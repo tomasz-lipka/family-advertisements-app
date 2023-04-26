@@ -8,6 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller for the error page view. Overrides the default error page.
+ *
+ * @author Tomasz Lipka
+ */
 @Controller
 public class CustomHtmlErrorController implements ErrorController {
 

@@ -71,7 +71,7 @@ Home page
 
 
 ## Project Status
-Project is: _in progress_, but a stable first version is already deployed.
+Project is: _in progress_, but a stable version is already deployed.
 
 
 ## Room for Improvement

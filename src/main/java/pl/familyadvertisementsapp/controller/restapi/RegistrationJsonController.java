@@ -13,6 +13,11 @@ import pl.familyadvertisementsapp.exception.CustomUserServiceException;
 import pl.familyadvertisementsapp.model.dto.CustomUserDto;
 import pl.familyadvertisementsapp.service.customuser.CustomUserService;
 
+/**
+ * Rest controller for the Custom User entity.
+ *
+ * @author Tomasz Lipka
+ */
 @RestController
 @RequestMapping("/restapi/registration")
 @AllArgsConstructor
