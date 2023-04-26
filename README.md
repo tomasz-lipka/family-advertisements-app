@@ -10,6 +10,7 @@ Simple app to share advertisements with your family and friends <br />
 * [Screenshots](#screenshots)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
 
 
 ## General Information
@@ -39,7 +40,7 @@ close ones to let them know that you throw a party or need help with your broken
 
 I decided to use two approaches in terms of serving data to the end user:
 1. To expose a graphical UI, a server-side rendering Java template, namely Thymeleaf is used.
-2. As Thymeleaf does not support REST API, I implemented separately Rest Controllers. The REST API can be accessed via Swagger.
+2. As the view implementation for Thymeleaf does not support REST services, I implemented separate REST Controllers. The REST API can be accessed via Swagger.
 
 
 ## Features
@@ -80,5 +81,11 @@ To do:
 - Add admin group (now there is only a single user group).
 - Add _change password_ feature.
 - Add a family/friends membership group, to limit visibility of an _Advertisement_ to a single group of people.
+
+
+## Acknowledgements
+Many thanks to:
+- www.baeldung.com
+- www.spring.io
 
 

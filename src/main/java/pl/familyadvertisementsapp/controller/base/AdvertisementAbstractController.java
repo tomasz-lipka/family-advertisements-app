@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import pl.familyadvertisementsapp.model.Advertisement;
 
 /**
- * Abstract class providing a template for the advertisement controller implementation. Contains advertisement CRUD methods.
+ * Abstract class providing a template for the advertisement controller implementation. Contains Advertisement CRUD methods.
  *
  * @author Tomasz Lipka
  */
