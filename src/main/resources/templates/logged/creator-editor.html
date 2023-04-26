@@ -12,10 +12,9 @@
          <div th:insert="logged/blank :: menu"></div>
          <hr>
          <br>
-         <form th:action="@{/advertisements}" th:object="${advertisement}" th:method="${restMethod}">
+         <form th:action="${restMethod} == POST ? @{/advertisements} : @{/advertisements/{id}(id = *{id})}" th:object="${advertisement}" th:method="${restMethod}">
             <p class="message-core message-info" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
             <p class="message-core message-info" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
-            <input type="hidden" th:field="*{id}"/>
             <h3>title</h3>
             <div>
                <input class="input-width-short" type="text" th:field="*{title}" minlength="5" maxlength="20" required="required"/>

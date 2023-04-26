@@ -53,12 +53,12 @@ public class AdvertisementJsonController extends AdvertisementAbstractController
     }
 
     @Override
-    protected Object update(@RequestBody @Valid Advertisement advertisement, BindingResult result) {
+    protected Object update(@PathVariable Long id, @RequestBody @Valid Advertisement advertisement, BindingResult result) {
         try {
             if (result.hasErrors()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result.toString());
             }
-            advertisementService.update(advertisement);
+            advertisementService.updateBy(id, advertisement);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (AdvertisementServiceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

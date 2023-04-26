@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.familyadvertisementsapp.controller.base.AdvertisementAbstractController;
@@ -94,8 +93,8 @@ public class AdvertisementHtmlController extends AdvertisementAbstractController
         }
     }
 
-    @PutMapping()
-    public ModelAndView update(@Valid Advertisement advertisement, BindingResult result) {
+    @Override
+    public ModelAndView update(@PathVariable Long id, @Valid Advertisement advertisement, BindingResult result) {
         try {
             if (result.hasErrors()) {
                 ModelAndView mav = new ModelAndView("logged/creator-editor");
@@ -103,7 +102,7 @@ public class AdvertisementHtmlController extends AdvertisementAbstractController
                 return mav;
             }
             ModelAndView mav = new ModelAndView("redirect:/advertisements/my?updated");
-            advertisementService.update(advertisement);
+            advertisementService.updateBy(id, advertisement);
             return mav;
         } catch (AdvertisementServiceException e) {
             return customHtmlErrorController.getErrorView(e.getMessage());

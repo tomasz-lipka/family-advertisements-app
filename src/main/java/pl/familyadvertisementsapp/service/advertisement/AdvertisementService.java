@@ -51,8 +51,8 @@ public class AdvertisementService {
         advertisementRepository.save(advertisement);
     }
 
-    public void update(Advertisement formAdvertisement) throws AdvertisementServiceException {
-        Advertisement advertisement = getIfOwnedAndExistsBy(formAdvertisement.getId());
+    public void updateBy(Long id, Advertisement formAdvertisement) throws AdvertisementServiceException {
+        Advertisement advertisement = getIfOwnedAndExistsBy(id);
         advertisement.update(formAdvertisement.getTitle(), formAdvertisement.getDescription());
         advertisementRepository.save(advertisement);
     }

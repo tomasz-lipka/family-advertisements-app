@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import pl.familyadvertisementsapp.model.Advertisement;
 
+/**
+ * Abstract class providing a template for the advertisement controller implementation. Contains advertisement CRUD methods.
+ *
+ * @author Tomasz Lipka
+ */
 public abstract class AdvertisementAbstractController<T> {
 
     @GetMapping("/all")
@@ -21,6 +26,6 @@ public abstract class AdvertisementAbstractController<T> {
     @DeleteMapping("/{id}")
     protected abstract T delete(Long id);
 
-    @PutMapping()
-    protected abstract T update(Advertisement advertisement, BindingResult result);
+    @PutMapping("/{id}")
+    protected abstract T update(Long id, Advertisement advertisement, BindingResult result);
 }
