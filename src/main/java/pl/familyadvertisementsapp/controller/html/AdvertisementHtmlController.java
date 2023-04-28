@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.familyadvertisementsapp.controller.base.AdvertisementAbstractController;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
+import pl.familyadvertisementsapp.model.dto.AdvertisementDto;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 
 import java.util.Collection;
@@ -25,7 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/advertisements")
 @AllArgsConstructor
-public class AdvertisementHtmlController extends AdvertisementAbstractController {
+public class AdvertisementHtmlController extends AdvertisementAbstractController<ModelAndView> {
 
     private final CustomHtmlErrorController customHtmlErrorController;
     private final AdvertisementService advertisementService;
@@ -59,14 +60,14 @@ public class AdvertisementHtmlController extends AdvertisementAbstractController
     }
 
     @Override
-    public ModelAndView create(@Valid Advertisement advertisement, BindingResult result) {
+    public ModelAndView create(@Valid AdvertisementDto advertisementDto, BindingResult result) {
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView("logged/creator-editor");
             mav.addObject("restMethod", "POST");
             mav.addObject("selectedMenuPage", MenuPage.CREATOR.toString());
             return mav;
         }
-        advertisementService.create(advertisement);
+        advertisementService.create(advertisementDto);
         return new ModelAndView("redirect:/advertisements/all?created");
     }
 
@@ -94,7 +95,7 @@ public class AdvertisementHtmlController extends AdvertisementAbstractController
     }
 
     @Override
-    public ModelAndView update(@PathVariable Long id, @Valid Advertisement advertisement, BindingResult result) {
+    public ModelAndView update(@PathVariable Long id, @Valid AdvertisementDto advertisementDto, BindingResult result) {
         try {
             if (result.hasErrors()) {
                 ModelAndView mav = new ModelAndView("logged/creator-editor");
@@ -102,7 +103,7 @@ public class AdvertisementHtmlController extends AdvertisementAbstractController
                 return mav;
             }
             ModelAndView mav = new ModelAndView("redirect:/advertisements/my?updated");
-            advertisementService.updateBy(id, advertisement);
+            advertisementService.updateBy(id, advertisementDto);
             return mav;
         } catch (AdvertisementServiceException e) {
             return customHtmlErrorController.getErrorView(e.getMessage());

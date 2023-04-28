@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.familyadvertisementsapp.controller.base.AdvertisementAbstractController;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.model.Advertisement;
+import pl.familyadvertisementsapp.model.dto.AdvertisementDto;
 import pl.familyadvertisementsapp.service.advertisement.AdvertisementService;
 
 import java.util.List;
@@ -39,11 +40,11 @@ public class AdvertisementJsonController extends AdvertisementAbstractController
     }
 
     @Override
-    public ResponseEntity<String> create(@RequestBody @Valid Advertisement advertisement, BindingResult result) {
+    public ResponseEntity<String> create(@RequestBody @Valid AdvertisementDto advertisementDto, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result.toString());
         }
-        advertisementService.create(advertisement);
+        advertisementService.create(advertisementDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -58,12 +59,12 @@ public class AdvertisementJsonController extends AdvertisementAbstractController
     }
 
     @Override
-    protected Object update(@PathVariable Long id, @RequestBody @Valid Advertisement advertisement, BindingResult result) {
+    protected Object update(@PathVariable Long id, @RequestBody @Valid AdvertisementDto advertisementDto, BindingResult result) {
         try {
             if (result.hasErrors()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result.toString());
             }
-            advertisementService.updateBy(id, advertisement);
+            advertisementService.updateBy(id, advertisementDto);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (AdvertisementServiceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

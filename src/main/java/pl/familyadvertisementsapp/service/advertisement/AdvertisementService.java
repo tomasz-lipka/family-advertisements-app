@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.familyadvertisementsapp.exception.AdvertisementServiceException;
 import pl.familyadvertisementsapp.helper.UserSessionHelper;
 import pl.familyadvertisementsapp.model.Advertisement;
+import pl.familyadvertisementsapp.model.dto.AdvertisementDto;
 import pl.familyadvertisementsapp.repository.AdvertisementRepository;
 
 import java.util.Collections;
@@ -45,15 +46,21 @@ public class AdvertisementService {
         return advertisements;
     }
 
-    public void create(Advertisement advertisement) {
+    public void create(AdvertisementDto advertisementDto) {
+        Advertisement advertisement = new Advertisement();
+        advertisement.setTitle(advertisementDto.getTitle());
+        advertisement.setDescription(advertisementDto.getDescription());
         advertisement.setOwnerUsername(getLoggedInUsername());
         advertisement.setCreated(new Date());
         advertisementRepository.save(advertisement);
     }
 
-    public void updateBy(Long id, Advertisement formAdvertisement) throws AdvertisementServiceException {
+    public void updateBy(Long id, AdvertisementDto advertisementDto) throws AdvertisementServiceException {
         Advertisement advertisement = getIfOwnedAndExistsBy(id);
-        advertisement.update(formAdvertisement.getTitle(), formAdvertisement.getDescription());
+        advertisement.update(
+                advertisementDto.getTitle(),
+                advertisementDto.getDescription()
+        );
         advertisementRepository.save(advertisement);
     }
 

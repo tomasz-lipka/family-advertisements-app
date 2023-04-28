@@ -93,7 +93,11 @@ class AdvertisementHtmlControllerTest {
     @Test
     @WithMockUser(username = MOCK_USER, roles = ROLE)
     void shouldDeleteRecordFromPersistenceLayer() throws Exception {
-        var advertisement = new Advertisement(getRandomString(), getRandomString(), new Date(), MOCK_USER);
+        Advertisement advertisement = new Advertisement();
+        advertisement.setTitle(getRandomString());
+        advertisement.setDescription(getRandomString());
+        advertisement.setCreated(new Date());
+        advertisement.setOwnerUsername(MOCK_USER);
         Advertisement saved = advertisementRepository.save(advertisement);
         mockMvc.perform(delete("/advertisements/" + saved.getId()));
         assertTrue(advertisementRepository.findById(saved.getId()).isEmpty());
@@ -103,7 +107,11 @@ class AdvertisementHtmlControllerTest {
     @WithMockUser(username = MOCK_USER, roles = ROLE)
     void shouldUpdateTitleInPersistenceLayer() throws Exception {
         var description = getRandomString();
-        var advertisement = new Advertisement(getRandomString(), description, new Date(), MOCK_USER);
+        Advertisement advertisement = new Advertisement();
+        advertisement.setTitle(getRandomString());
+        advertisement.setDescription(description);
+        advertisement.setCreated(new Date());
+        advertisement.setOwnerUsername(MOCK_USER);
 
         Advertisement saved = advertisementRepository.save(advertisement);
         String newTitle = getRandomString();
