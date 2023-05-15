@@ -115,13 +115,12 @@ class AdvertisementHtmlControllerTest {
 
         Advertisement saved = advertisementRepository.save(advertisement);
         String newTitle = getRandomString();
-        mockMvc.perform(put("/advertisements")
+        long id = saved.getId();
+        mockMvc.perform(put("/advertisements/" + id)
                 .param(TITLE_PARAM, newTitle)
                 .param(DESCRIPTION_PARAM, description)
-                .param("ownerUsername", MOCK_USER)
-                .param("id", String.valueOf(saved.getId()))
         );
-        boolean isNewTitle = advertisementRepository.findById(saved.getId()).get().getTitle().equals(newTitle);
+        boolean isNewTitle = advertisementRepository.findById(id).get().getTitle().equals(newTitle);
         assertTrue(isNewTitle);
 
         advertisementRepository.deleteById(saved.getId());

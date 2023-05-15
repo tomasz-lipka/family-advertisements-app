@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Data transfer class, allows transferring data from the view form into the program.
+ * Data transfer class.
+ * Allows transferring input Advertisement data into the program.
+ * Enforces validation of the input fields.
  *
  * @author Tomasz Lipka
  */
