@@ -1,7 +1,7 @@
 # Family Advertisements
 Simple app to share advertisements with your family and friends <br />
 
-> Live demo hosted on Microsoft Azure [_here_](https://family-advertisements.politewave-fef5f6a9.westeurope.azurecontainerapps.io).
+<!-- > Live demo hosted on Microsoft Azure [_here_](https://family-advertisements.politewave-fef5f6a9.westeurope.azurecontainerapps.io). -->
 
 ## Table of Contents
 * [General Info](#general-information)
